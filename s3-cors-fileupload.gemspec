@@ -30,6 +30,6 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
 end
