@@ -1,6 +1,6 @@
 = s3-cors-fileupload
 
-Description goes here.
+A gem to allow for uploading of files to AWS-S3 via CORS using the jQuery-File-Upload for Rails
 
 == Contributing to s3-cors-fileupload
  

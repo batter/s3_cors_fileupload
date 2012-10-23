@@ -1,0 +1,23 @@
+<!-- The template to display files that have been uploaded to S3 already -->
+<!-- This essentially is a stand-in for the template_download partial for the s3-cors-fileupload gem's purposes -->
+<script id="template-upload" type="text/x-tmpl">
+  <tr class="template-uploaded" id="source_file_{%=o.id%}">
+    <td class="preview">
+      {% if (o.image == true) { %}
+        <a href="{%=o.url%}" title="{%=o.name%}" rel="gallery" download="{%=o.name%}"><img src="{%=file.thumbnail_url%}"></a>
+      {% } %}
+    </td>
+    <td class="name">
+      <a href="{%=o.url%}" title="{%=o.name%}" rel="{%=o.thumbnail_url&&'gallery'%}" download="{%=o.name%}">{%=o.name%}</a>
+    </td>
+    <td class="size"><span>{%=formatFileSize(o.size)%}</span></td>
+    <td colspan="2"></td>
+    <td class="delete">
+      <button class="btn btn-danger" data-type="DELETE" data-url="{%=file.delete_url%}">
+        <i class="icon-trash icon-white"></i>
+        <span>{%=locale.fileupload.destroy%}</span>
+      </button>
+      <input type="checkbox" name="delete" value="1">
+    </td>
+  </tr>
+</script>

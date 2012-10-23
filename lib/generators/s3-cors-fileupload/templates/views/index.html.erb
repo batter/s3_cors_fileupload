@@ -1,0 +1,29 @@
+<h2>Upload file</h2>
+<%= s3_cors_fileupload_form, :id => 'fileupload' %>
+
+<div class="javascript-templates">
+  <%= render 'template_upload' %>
+  <%= render 'template_uploaded' %>
+  <%=# render 'template_download' %>
+</div>
+
+<script>
+  //<![CDATA[
+    $(function () {
+      // Initialize the jQuery File Upload widget:
+      $('#fileupload').fileupload({
+        dataType: 'xml',
+        sequentialUploads: true,
+        downloadTemplateId: null,
+        downloadTemplate: null
+      });
+      
+      // Load existing files:
+      $.getJSON('/source_files', function (files) {
+        $.each(files, function(index, value) { 
+          $('#upload_files tbody').append(tmpl('template-uploaded', value));
+        });
+      });
+    });
+  //]]>
+</script>
