@@ -1,6 +1,8 @@
 class SourceFile < ActiveRecord::Base
   attr_accessible :url, :bucket, :key
 
+  has_one :resource_version, :inverse_of => :source_file
+
   validates_presence_of :file_name, :file_content_type, :file_size, :key, :bucket
 
   before_validation(:on => :create) do
@@ -16,13 +18,14 @@ class SourceFile < ActiveRecord::Base
   after_destroy { s3_object.try(:delete) }
 
   def to_jq_upload
-    { 'name' => file_name,
+    { 
+      'id' => id,
+      'name' => file_name,
       'size' => file_size,
       'url' => url,
-      'image' => self.is_image? #,
-      # "delete_url" => upload_path(self),
-      # "delete_type" => "DELETE"
-      }
+      'image' => self.is_image?,
+      'delete_url' => Rails.application.routes.url_helpers.source_file_path(self)
+    }
   end
 
   def is_image?
