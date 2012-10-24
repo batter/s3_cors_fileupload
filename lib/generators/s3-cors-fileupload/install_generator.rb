@@ -4,9 +4,8 @@ require 'rails/generators/active_record/migration'
 
 module S3CorsFileupload
   class InstallGenerator < ::Rails::Generators::Base
-    include Rails::Generators::Migration
+    include ::Rails::Generators::Migration
     extend ActiveRecord::Generators::Migration
-    extend ActiveRecord::Generators::ModelGenerator
 
     source_root File.expand_path('../templates', __FILE__)
     class_option :with_controller, :type => :boolean, :default => false, :desc => "Store changeset (diff) with each version"
@@ -29,7 +28,7 @@ module S3CorsFileupload
     end
     
     def create_views
-      Dir.mkdir("#{::Rails.root}/app/views/s3_uploads") unless File.directory?("#{::Rails.root}/app/views/s3_uploads")
+      # Dir.mkdir(File.absolute_path("#{::Rails.root}/app/views") + '/s3_uploads') unless File.directory?("#{::Rails.root}/app/views/s3_uploads")
       Dir.foreach('./templates/views').reject { |file_name| %w(. ..).include?(file_name) }.each do |file_name|
         copy_file file_name, "app/views/s3_uploads/#{file_name}"
       end
@@ -45,7 +44,9 @@ end
 module ActionDispatch::Routing
   class Mapper
     def add_gem_routes
-      #routing code...
+      resources :source_files, :only => [:index, :create, :destroy], :controller => 's3_uploads' do
+        get :generate_key, :on => :collection
+      end
     end
   end
 end
