@@ -1,6 +1,6 @@
 Description:
-    Generates (but does not run) a migration to add a source_files table, and a corresponding model,
-    as well as a controller, routes, and views for the file uploading.
+    Creates a config file, then generates (but does not run) a migration to add a source_files table and
+    a corresponding model, as well as a controller, routes, and views for the file uploading.
 
 Example:
     rails generate s3_cors_fileupload:install

@@ -11,8 +11,12 @@ module S3CorsFileupload
       source_root File.expand_path('../templates', __FILE__)
       # class_option :with_controller, :type => :boolean, :default => false, :desc => "Generate controller, views, and routes"
 
-      desc 'Generates (but does not run) a migration to add a source_files table, and a corresponding model,
-            as well as a controller, routes, and views for the file uploading.'
+      desc('Creates a config file, then generates (but does not run) a migration to add a source_files table and ' +
+            'a corresponding model, as well as a controller, routes, and views for the file uploading.')
+
+      def create_config_file
+        copy_file 'amazon_s3.yml', 'config/amazon_s3.yml'
+      end
 
       def create_migration_file
         migration_template 'create_source_files.rb', 'db/migrate/create_source_files.rb'
