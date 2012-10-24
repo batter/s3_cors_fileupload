@@ -2,14 +2,14 @@
 require File.expand_path('../lib/s3_cors_fileupload/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "s3-cors-fileupload"
+  s.name        = "s3_cors_fileupload"
   s.version     = S3CorsFileupload::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ben Atkins"]
   s.email       = ["benatkins@fullbridge.com"]
-  s.homepage    = "http://github.com/fullbridge-batkins/s3-cors-fileupload"
-  s.summary     = "File uploads for Rails 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
-  s.description = "A Ruby gem for providing File uploads for Rails 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
+  s.homepage    = "http://github.com/fullbridge-batkins/s3_cors_fileupload"
+  s.summary     = "File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
+  s.description = "A Ruby gem for providing File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
   s.licenses    = ["MIT"]
   
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=

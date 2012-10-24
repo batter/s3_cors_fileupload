@@ -5,7 +5,7 @@ require 'digest/sha1'
 class S3UploadsController < ApplicationController
 
   helper_method :s3_upload_policy_document, :s3_upload_signature
-  
+
   # GET /source_files
   # GET /source_files.json
   def index
@@ -16,11 +16,11 @@ class S3UploadsController < ApplicationController
       format.json { render json: @source_files.map{|sf| sf.to_jq_upload } }
     end
   end
-  
+
   # POST /source_files
   # POST /source_files.json
   def create
-    @source_file = SourceFile.new(params[:file])
+    @source_file = SourceFile.new(params[:source_file])
     respond_to do |format|
       if @source_file.save
         format.html {
@@ -35,7 +35,7 @@ class S3UploadsController < ApplicationController
       end
     end
   end
-  
+
   # DELETE /source_files/1
   # DELETE /source_files/1.json
   def destroy
@@ -48,18 +48,18 @@ class S3UploadsController < ApplicationController
       format.xml { head :no_content }
     end
   end
-  
+
   # used for s3_uploader
   def generate_key
     require 'uuidtools'
     uid = UUIDTools::UUID.timestamp_create.to_s.gsub(/-/,'')
-    
+
     render json: {
-      key: "cma/#{uid}/#{params[:filename]}",
+      key: "uploads/#{uid}/#{params[:filename]}",
       success_action_redirect: "/"
     }
   end
-  
+
   # ---- Helpers ----
   # generate the policy document that amazon is expecting.
   def s3_upload_policy_document

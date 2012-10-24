@@ -1,8 +1,9 @@
-# s3-cors-fileupload
+# s3_cors_fileupload
 
-A gem to allow for uploading of files to AWS-S3 via CORS using the jQuery-File-Upload for Rails
+A gem to allow for uploading of files to directly AWS-S3 via CORS via the
+[jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) for Rails 3.1 and greater.
 
-## Contributing to s3-cors-fileupload
+## Contributing to s3_cors_fileupload
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -15,6 +16,5 @@ A gem to allow for uploading of files to AWS-S3 via CORS using the jQuery-File-U
 
 ## Copyright
 
-Copyright (c) 2012 Ben Atkins. See [LICENSE.txt](https://github.com/fullbridge-batkins/s3-cors-fileupload/blob/master/LICENSE.txt)
+Copyright (c) 2012 Ben Atkins. See [LICENSE.txt](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/master/LICENSE.txt)
 for further details.
-

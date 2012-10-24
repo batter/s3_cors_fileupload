@@ -3,14 +3,13 @@ Description:
     as well as a controller, routes, and views for the file uploading.
 
 Example:
-    rails generate s3-cors-fileupload:install
+    rails generate s3_cors_fileupload:install
 
     This will create:
         db/migrate/create_source_files.rb
         app/models/source_file.rb
-    As well as:
-        app/assets/javascripts/s3_uploads.js
         app/controllers/s3_uploads_controller.rb
+        app/assets/javascripts/s3_uploads.js
         app/views/s3_uploads/
         app/views/s3_uploads/_template_download.html.erb
         app/views/s3_uploads/_template_upload.html.erb
