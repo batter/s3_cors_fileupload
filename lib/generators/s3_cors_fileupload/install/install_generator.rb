@@ -9,7 +9,7 @@ module S3CorsFileupload
       extend ActiveRecord::Generators::Migration
 
       source_root File.expand_path('../templates', __FILE__)
-      class_option :with_controller, :type => :boolean, :default => false, :desc => "Store changeset (diff) with each version"
+      # class_option :with_controller, :type => :boolean, :default => false, :desc => "Generate controller, views, and routes"
 
       desc 'Generates (but does not run) a migration to add a source_files table, and a corresponding model,
             as well as a controller, routes, and views for the file uploading.'
@@ -29,9 +29,8 @@ module S3CorsFileupload
       end
     
       def create_views
-        # Dir.mkdir(File.absolute_path("#{::Rails.root}/app/views") + '/s3_uploads') unless File.directory?("#{::Rails.root}/app/views/s3_uploads")
-        Dir.foreach('./templates/views').reject { |file_name| %w(. ..).include?(file_name) }.each do |file_name|
-          copy_file file_name, "app/views/s3_uploads/#{file_name}"
+        Dir.foreach(File.expand_path('../templates/views', __FILE__)).reject { |file_name| %w(. ..).include?(file_name) }.each do |file_name|
+          copy_file "views/#{file_name}", "app/views/s3_uploads/#{file_name}"
         end
       end
     
