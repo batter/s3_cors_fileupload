@@ -18,7 +18,7 @@ module S3CorsFileupload
     
     def build_form_options(options = {})
       {
-        :id = 'fileupload',
+        :id => 'fileupload',
         :method => 'post',
         :multipart => true,
         :authenticity_token => false
