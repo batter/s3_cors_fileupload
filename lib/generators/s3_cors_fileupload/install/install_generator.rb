@@ -35,19 +35,12 @@ module S3CorsFileupload
       end
     
       def setup_routes
-        route('add_gem_routes')
+        route(
+          ["resources :source_files, :only => [:index, :create, :destroy], :controller => 's3_uploads' do", "\n",
+          "    get :generate_key, :on => :collection", "\n", "  end"].join
+        )
       end
     
-    end
-  end
-end
-
-module ActionDispatch::Routing
-  class Mapper
-    def add_gem_routes
-      resources :source_files, :only => [:index, :create, :destroy], :controller => 's3_uploads' do
-        get :generate_key, :on => :collection
-      end
     end
   end
 end
