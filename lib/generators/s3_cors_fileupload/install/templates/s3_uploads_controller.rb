@@ -51,8 +51,7 @@ class S3UploadsController < ApplicationController
 
   # used for s3_uploader
   def generate_key
-    require 'uuidtools'
-    uid = UUIDTools::UUID.timestamp_create.to_s.gsub(/-/,'')
+    uid = SecureRandom.uuid.gsub(/-/,'')
 
     render json: {
       key: "uploads/#{uid}/#{params[:filename]}",
