@@ -26,7 +26,19 @@ not to commit your S3 account information to your repository, like so:
 
     secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
 
-Now before you'r ready to run the application, make sure your AWS S3 CORS settings for your bucket are setup
+Add the following javascript and CSS to your asset pipeline:
+
+**s3_cors_fileupload.js**
+```javascript
+//= require s3_cors_fileupload
+```
+
+**jquery.fileupload-ui.css**
+```css
+*= require jquery.fileupload-ui
+```
+
+Now before you're ready to run the application, make sure your AWS S3 CORS settings for your bucket are setup
 to receive file uploads.  Before you put the application into production, I would highly recommend reading
 [the official documentation for CORS](http://docs.amazonwebservices.com/AmazonS3/latest/dev/cors.html).
 If you just want to get up and running, here is a configuration that will get you going:
