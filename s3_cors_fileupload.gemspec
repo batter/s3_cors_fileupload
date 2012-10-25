@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   
   s.add_dependency('rails', ['~> 3.1'])
   s.add_dependency('jquery-rails', ['>= 2.0'])
-  s.add_dependency('aws-s3', ['~> 0.6'])
+  s.add_dependency('aws-s3', ['~> 0.6']) # :require => 'aws/s3'
   
   s.add_development_dependency('rake', [">= 0.8.7"])
   s.add_development_dependency('bundler', [">= 0"])

@@ -1,3 +1,5 @@
+require 'aws/s3'
+
 class SourceFile < ActiveRecord::Base
   attr_accessible :url, :bucket, :key
 
