@@ -1,10 +1,12 @@
-<h2>Upload file</h2>
-<%= s3_cors_fileupload_form :id => 'fileupload' %>
+<div style="padding: 10px;">
+  <h2>Upload file</h2>
+  <%= s3_cors_fileupload_form :id => 'fileupload' %>
 
-<div class="javascript-templates">
-  <%= render 'template_upload' %>
-  <%= render 'template_uploaded' %>
-  <%# render 'template_download' %>
+  <div class="javascript-templates">
+    <%= render 'template_upload' %>
+    <%= render 'template_uploaded' %>
+    <%# render 'template_download' %>
+  </div>
 </div>
 
 <script>
