@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency('jquery-rails', ['>= 2.0'])
   s.add_dependency('aws-s3', ['~> 0.6'])
   
-  s.add_development_dependency 'rake'
+  s.add_development_dependency('rake', [">= 0.8.7"])
   s.add_development_dependency('bundler', [">= 0"])
   s.add_development_dependency('rdoc', ["~> 3.12"])
   s.add_development_dependency('jeweler', ["~> 1.8.4"])
