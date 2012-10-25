@@ -5,8 +5,8 @@ class CreateSourceFiles < ActiveRecord::Migration
       t.string :file_content_type
       t.integer :file_size
       t.string :url
-      t.string :_key
-      t.string :_bucket
+      t.string :key
+      t.string :bucket
 
       t.timestamps
     end
