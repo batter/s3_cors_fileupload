@@ -4,7 +4,9 @@
   <tr class="template-uploaded" id="source_file_{%=o.id%}">
     <td class="preview">
       {% if (o.image == true) { %}
-        <a href="{%=o.url%}" title="{%=o.name%}" rel="gallery" download="{%=o.name%}"><img src="{%=file.thumbnail_url%}"></a>
+        <a href="{%=o.url%}" title="{%=o.name%}" rel="gallery" download="{%=o.name%}"><img src="{%=file.thumbnail_url%}">
+          <image src="{%=o.url%}", style='width:80px; height:56px;'></image>
+        </a>
       {% } %}
     </td>
     <td class="name">
