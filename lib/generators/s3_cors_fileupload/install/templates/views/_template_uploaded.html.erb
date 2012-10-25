@@ -4,7 +4,7 @@
   <tr class="template-uploaded" id="source_file_{%=o.id%}">
     <td class="preview">
       {% if (o.image == true) { %}
-        <a href="{%=o.url%}" title="{%=o.name%}" rel="gallery" download="{%=o.name%}"><img src="{%=file.thumbnail_url%}">
+        <a href="{%=o.url%}" title="{%=o.name%}" rel="gallery" download="{%=o.name%}">
           <image src="{%=o.url%}", style='width:80px; height:56px;'></image>
         </a>
       {% } %}
@@ -15,7 +15,7 @@
     <td class="size"><span>{%=formatFileSize(o.size)%}</span></td>
     <td colspan="2"></td>
     <td class="delete">
-      <button class="btn btn-danger" data-type="DELETE" data-url="{%=file.delete_url%}">
+      <button class="btn btn-danger" data-type="DELETE" data-url="{%=o.delete_url%}">
         <i class="icon-trash icon-white"></i>
         <span>Delete</span>
       </button>
