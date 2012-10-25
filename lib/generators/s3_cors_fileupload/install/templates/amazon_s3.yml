@@ -1,7 +1,7 @@
 defaults: &defaults
   access_key_id: your_access_key_id
   secret_access_key: your_secret_access_key
-  acl: public-read # options: private, public_read, public-read-write, authenticated-read
+  acl: public-read # options: private, public-read, public-read-write, authenticated-read
   max_file_size: 524288000 # 500 megabytes
 
 development:

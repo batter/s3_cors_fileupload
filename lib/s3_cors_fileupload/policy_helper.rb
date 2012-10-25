@@ -7,14 +7,13 @@ module S3CorsFileupload
   class PolicyHelper
     attr_reader :options
     
-    def initialize(options = {})
+    def initialize(_options = {})
       # default max_file_size to 500 MB if nothing is received
       @options = {
         :acl => 'public-read',
         :max_file_size => AMAZON_S3_CONFIG['max_file_size'] || 524288000,
-        :bucket => AMAZON_S3_CONFIG['bucket'],
-        :secret_access_key => AMAZON_S3_CONFIG['secret_access_key']
-      }.merge(options)
+        :bucket => AMAZON_S3_CONFIG['bucket']
+      }.merge(_options).merge(:secret_access_key => AMAZON_S3_CONFIG['secret_access_key'])
     end
     
     # generate the policy document that amazon is expecting.
@@ -23,10 +22,10 @@ module S3CorsFileupload
         {
           expiration: 1.hour.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
           conditions: [
-            { bucket: @options[:bucket] },
-            { acl: @options[:acl] },
+            { bucket: options[:bucket] },
+            { acl: options[:acl] },
             { success_action_status: '201' },
-            ["content-length-range", 0, @options[:max_file_size]],
+            ["content-length-range", 0, options[:max_file_size]],
             ["starts-with", "$utf8", ""],
             ["starts-with", "$key", ""],
             ["starts-with", "$Content-Type", ""]
@@ -40,7 +39,7 @@ module S3CorsFileupload
       Base64.encode64(
         OpenSSL::HMAC.digest(
           OpenSSL::Digest::Digest.new('sha1'),
-          @options[:secret_access_key],
+          options[:secret_access_key],
           self.policy_document
         )
       ).gsub(/\n/, '')

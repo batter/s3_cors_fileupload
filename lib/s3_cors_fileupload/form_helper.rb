@@ -1,5 +1,20 @@
 module S3CorsFileupload
   module FormHelper
+    # Options:
+    # :access_key_id    The AWS Access Key ID of the owner of the bucket.
+    #                   Defaults to the `AMAZON_S3_CONFIG['access_key_id']` (read from the yaml config file).
+    #
+    # :acl              One of S3's Canned Access Control Lists, must be one of:
+    #                   'private', 'public-read', 'public-read-write', 'authenticated-read'.
+    #                   Defaults to `'public-read'`.
+    #
+    # :max_file_size    The max file size (in bytes) that you wish to allow to be uploaded.
+    #                   Defaults to `AMAZON_S3_CONFIG['max_file_size']` or, if no value is set on the yaml file `524288000` (500 MB)
+    #
+    # :bucket           The name of the bucket on S3 you wish for the files to be uploaded to.
+    #                   Defaults to `AMAZON_S3_CONFIG['bucket']` (read from the yaml config file).
+    #
+    # Any other key creates standard HTML options for the form tag.
     def s3_cors_fileupload_form(options = {}, &block)
       policy_helper = PolicyHelper.new(options)
       # initialize the hidden form fields
@@ -11,37 +26,34 @@ module S3CorsFileupload
         :signature => policy_helper.upload_signature,
         :success_action_status => '201'
       }
-      construct_form_html(hidden_form_fields, &block)
+      # assume that all of the non-documented keys are 
+      _html_options = options.reject { |key, val| [:access_key_id, :acl, :max_file_size, :bucket].include?(key) }
+      # return the form html
+      construct_form_html(hidden_form_fields, policy_helper.options[:bucket], _html_options,  &block)
     end
     
     private
     
     def build_form_options(options = {})
-      {
-        :id => 'fileupload',
-        :method => 'post',
-        :multipart => true,
-        :authenticity_token => false
-      }
+      { :id => 'fileupload' }.merge(options).merge(:multipart => true, :authenticity_token => false)
     end
     
-    # hidden fields argument should be a hash of key value pairs (values can be left blank if desired)
-    def construct_form_html(hidden_fields, &block)
-      # determine if a bucket argument was passed in
-      bucket = form_options[:bucket] || AMAZON_S3_CONFIG['bucket']
+    # hidden fields argument should be a hash of key value pairs (values may be blank if desired)
+    def construct_form_html(hidden_fields, bucket, html_options = {}, &block)
       # now build the html for the form
-      form_text = form_tag("https://#{AMAZON_S3_CONFIG['bucket']}.s3.amazonaws.com", build_form_options) do
-        hidden_form_fields.map do |name, value|
+      form_text = form_tag("https://#{bucket}.s3.amazonaws.com", build_form_options(html_options)) do
+        hidden_fields.map do |name, value|
           hidden_field_tag(name, value)
-        end.join.html_safe +
-        "<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->  
+        end.join.html_safe + "
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->  
         <div class='row fileupload-buttonbar'>
           <div class='span7'>
             <button class='btn btn-success fileinput-button'>
               <i class='icon-plus icon-white'></i>
-              <span>Add files...</span>".html_safe +
-              file_field_tag(:file, :multiple => true) +
-            "</button>
+              <span>Add files...</span>
+              ".html_safe +
+              file_field_tag(:file, :multiple => true) + "
+            </button>
             <button class='btn btn-primary start' type='submit'>
               <i class='icon-upload icon-white'></i>
               <span>Start upload</span>
