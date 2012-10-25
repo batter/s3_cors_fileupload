@@ -20,6 +20,7 @@ module S3CorsFileupload
       # initialize the hidden form fields
       hidden_form_fields = {
         :key => '',
+        'Content-Type' => '',
         'AWSAccessKeyId' => options[:access_key_id] || AMAZON_S3_CONFIG['access_key_id'],
         :acl => policy_helper.options[:acl],
         :policy => policy_helper.policy_document,
