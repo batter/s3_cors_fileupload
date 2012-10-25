@@ -11,9 +11,9 @@ module S3CorsFileupload
       # default max_file_size to 500 MB if nothing is received
       @options = {
         :acl => 'public-read',
-        :max_file_size => AMAZON_S3_CONFIG['max_file_size'] || 524288000,
-        :bucket => AMAZON_S3_CONFIG['bucket']
-      }.merge(_options).merge(:secret_access_key => AMAZON_S3_CONFIG['secret_access_key'])
+        :max_file_size => Config.max_file_size || 524288000,
+        :bucket => Config.bucket
+      }.merge(_options).merge(:secret_access_key => Config.secret_access_key)
     end
     
     # generate the policy document that amazon is expecting.

@@ -2,17 +2,17 @@ module S3CorsFileupload
   module FormHelper
     # Options:
     # :access_key_id    The AWS Access Key ID of the owner of the bucket.
-    #                   Defaults to the `AMAZON_S3_CONFIG['access_key_id']` (read from the yaml config file).
+    #                   Defaults to the `Config.access_key_id` (read from the yaml config file).
     #
     # :acl              One of S3's Canned Access Control Lists, must be one of:
     #                   'private', 'public-read', 'public-read-write', 'authenticated-read'.
     #                   Defaults to `'public-read'`.
     #
     # :max_file_size    The max file size (in bytes) that you wish to allow to be uploaded.
-    #                   Defaults to `AMAZON_S3_CONFIG['max_file_size']` or, if no value is set on the yaml file `524288000` (500 MB)
+    #                   Defaults to `Config.max_file_size` or, if no value is set on the yaml file `524288000` (500 MB)
     #
     # :bucket           The name of the bucket on S3 you wish for the files to be uploaded to.
-    #                   Defaults to `AMAZON_S3_CONFIG['bucket']` (read from the yaml config file).
+    #                   Defaults to `Config.bucket` (read from the yaml config file).
     #
     # Any other key creates standard HTML options for the form tag.
     def s3_cors_fileupload_form(options = {}, &block)
@@ -21,7 +21,7 @@ module S3CorsFileupload
       hidden_form_fields = {
         :key => '',
         'Content-Type' => '',
-        'AWSAccessKeyId' => options[:access_key_id] || AMAZON_S3_CONFIG['access_key_id'],
+        'AWSAccessKeyId' => options[:access_key_id] || Config.access_key_id,
         :acl => policy_helper.options[:acl],
         :policy => policy_helper.policy_document,
         :signature => policy_helper.upload_signature,

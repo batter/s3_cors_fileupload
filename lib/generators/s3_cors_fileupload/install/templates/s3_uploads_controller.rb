@@ -66,7 +66,7 @@ class S3UploadsController < ApplicationController
       {
         expiration: 1.hour.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
         conditions: [
-          { bucket: S3CorsFileupload::AMAZON_S3_CONFIG['bucket'] },
+          { bucket: S3CorsFileupload::Config.bucket },
           { acl: 'public-read' },
           { success_action_status: '201' },
           ["starts-with", "$key", ""],
@@ -81,7 +81,7 @@ class S3UploadsController < ApplicationController
     Base64.encode64(
       OpenSSL::HMAC.digest(
         OpenSSL::Digest::Digest.new('sha1'),
-        S3CorsFileupload::AMAZON_S3_CONFIG['secret_access_key'],
+        S3CorsFileupload::Config.secret_access_key,
         s3_upload_policy_document
       )
     ).gsub(/\n/, '')

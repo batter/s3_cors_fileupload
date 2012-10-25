@@ -40,8 +40,8 @@ class SourceFile < ActiveRecord::Base
   def self.open_aws
     unless AWS::S3::Base.connected?
       AWS::S3::Base.establish_connection!(
-        :access_key_id     => S3CorsFileupload::AMAZON_S3_CONFIG['access_key_id'],
-        :secret_access_key => S3CorsFileupload::AMAZON_S3_CONFIG['secret_access_key']
+        :access_key_id     => S3CorsFileupload::Config.access_key_id,
+        :secret_access_key => S3CorsFileupload::Config.secret_access_key
       )
     end
     return AWS::S3::Base.connected?
