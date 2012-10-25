@@ -1,5 +1,7 @@
 module S3CorsFileupload
   module Config
+    require 'yaml'
+
     # this allows us to lazily instantiate the configuration by reading it in when it needs to be accessed
     class << self
       # if a method is called on the class, attempt to look it up in the config array

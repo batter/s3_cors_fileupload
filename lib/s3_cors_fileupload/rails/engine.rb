@@ -1,5 +1,3 @@
-require 'yaml'
-
 module S3CorsFileupload
   module Rails
     class Engine < ::Rails::Engine
