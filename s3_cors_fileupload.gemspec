@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["benatkins@fullbridge.com"]
   s.homepage    = "http://github.com/fullbridge-batkins/s3_cors_fileupload"
   s.summary     = "File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
-  s.description = "A Ruby gem for providing File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
+  s.description = "A gem for providing File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
   s.licenses    = ["MIT"]
   
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=

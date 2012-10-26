@@ -1,6 +1,6 @@
 # S3CorsFileupload
 
-A gem to allow for uploading of files to directly AWS-S3 via CORS via the
+A gem to allow for uploading of files to directly AWS-S3 via [CORS](http://www.w3.org/TR/cors/) via the
 [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) for Rails 3.1 and greater.
 
 ## Installation
@@ -20,9 +20,9 @@ Now run the migration that was just generated:
 
     bundle exec rake db:migrate
 
-As you may have noticed, a config file was generated at `config/amazon_s3.yml`.  Edit this file and fill in
-the fields with your AWS S3 credentials.  You can make the config load from environment variables if you wish
-not to commit your S3 account information to your repository, like so:
+Also, as you may have noticed, a config file was generated at `config/amazon_s3.yml`.  Edit this file and fill in
+the fields with your AWS S3 credentials.  If you don't want to commit your S3 account credentials to your
+repository, you can make the config load from environment variables like so:
 
     secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
 
@@ -62,7 +62,8 @@ line like so:
 
     <AllowedOrigin>*</AllowedOrigin>
 
-Just be sure to change this before you put it into production, otherwise anybody can upload to your bucket from any domain.
+Just be sure to change this value to your server's domain before you put it into production, otherwise anybody
+can upload to your bucket from any domain.
 
 ## Usage
 
@@ -71,7 +72,7 @@ Run your rails server
     bundle exec rails s
 
 Then navigate to `http://<server_root>/source_files` to get started.  The files that `s3_cors_fileupload`'s install generator
-provide you with are just a guide to get you started.  I thought this would be helpful to others since it took me a while to
+provide you with are just a guide to get you started.  I thought this would be helpful for others since it took me a while to
 get the [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) uploading directly to S3.  I encourage
 you to modify the controller, source files, and javascript as you see fit!
 
@@ -82,7 +83,7 @@ javascript uses aspects of [Twitter's Bootstrap](http://twitter.github.com/boots
 In index view file from this gem's generator it is included via a `stylesheet_link_tag` to use a copy of it
 [BootstrapCDN](http://www.bootstrapcdn.com/), but if you plan to use bootstrap in more places throughout
 your application, you may want look into using a gem such as
-`[twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails)`, which allows you to inject
+[twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails), which allows you to inject
 the stylesheets and javascripts from bootstrap into the asset pipeline.
 
 ## Contributing to S3CorsFileupload
