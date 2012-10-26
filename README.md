@@ -76,10 +76,30 @@ provide you with are just a guide to get you started.  I thought this would be h
 get the [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) uploading directly to S3.  I encourage
 you to modify the controller, source files, and javascript as you see fit!
 
+### What the gem provides for your Rails app
+
+S3CorsFileupload will inject the javascripts and CSS (with the exception of [Twitter Bootstrap](http://twitter.github.com/bootstrap/))
+styling necessary to render the UI version of the [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/)
+into the asset pipeline of your Rails application.  For more details on how Twitter Bootstrap is leveraged, see
+[the Notes section below](#notes).  
+
+The gem also provides a view helper to your Rails app, `s3_cors_fileupload_form_tag`, which will produce a form that renders
+the UI version of the [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) when called.
+This view helper accepts the following options:
+
+* `:access_key_id` - The AWS Access Key ID of the owner of the bucket.  Defaults to the `Config.access_key_id` (read from the `config/amazon_s3.yml` config file).
+* `:acl` - One of S3's Canned Access Control Lists, must be one of: 'private', 'public-read', 'public-read-write', 'authenticated-read'.  Defaults to `'public-read'`.
+* `:max_file_size` - The max file size (in bytes) that you wish to allow to be uploaded.  Defaults to `Config.max_file_size` (read from the `config/amazon_s3.yml` config file) or, if no value is set on the `config/amazon_s3.yml` file, defaults to `524288000` (500 MB)
+* `:bucket` - The name of the bucket on S3 you wish for the files to be uploaded to.  Defaults to `Config.bucket` (read from the `config/amazon_s3.yml` config file).
+* Any other key creates standard HTML options for the form tag.
+
+For an example of how to use the helper, see the file located at `app/views/s3_uploads/index.html.erb` that
+the install generator produces.
+
 ## Notes
 
 The UI version of the [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/)
-javascript uses aspects of [Twitter's Bootstrap](http://twitter.github.com/bootstrap/) for styling purposes.
+javascript uses aspects of [Twitter Bootstrap](http://twitter.github.com/bootstrap/) for styling purposes.
 In index view file from this gem's generator it is included via a `stylesheet_link_tag` to use a copy of it
 [BootstrapCDN](http://www.bootstrapcdn.com/), but if you plan to use bootstrap in more places throughout
 your application, you may want look into using a gem such as

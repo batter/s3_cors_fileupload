@@ -15,7 +15,7 @@ module S3CorsFileupload
     #                   Defaults to `Config.bucket` (read from the yaml config file).
     #
     # Any other key creates standard HTML options for the form tag.
-    def s3_cors_fileupload_form(options = {}, &block)
+    def s3_cors_fileupload_form_tag(options = {}, &block)
       policy_helper = PolicyHelper.new(options)
       # initialize the hidden form fields
       hidden_form_fields = {

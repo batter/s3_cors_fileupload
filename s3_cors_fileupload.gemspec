@@ -21,8 +21,6 @@ Gem::Specification.new do |s|
   
   s.add_development_dependency('rake', [">= 0.8.7"])
   s.add_development_dependency('bundler', [">= 0"])
-  s.add_development_dependency('rdoc', ["~> 3.12"])
-  s.add_development_dependency('jeweler', ["~> 1.8.4"])
   
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
