@@ -32,6 +32,8 @@ module S3CorsFileupload
       # return the form html
       construct_form_html(hidden_form_fields, policy_helper.options[:bucket], _html_options,  &block)
     end
+
+    alias_method :s3_cors_fileupload_form, :s3_cors_fileupload_form_tag
     
     private
     
