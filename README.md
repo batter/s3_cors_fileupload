@@ -69,7 +69,7 @@ can upload to your bucket from any domain.
 
 Run your rails server
 
-    bundle exec rails s
+    bundle exec rails server
 
 Then navigate to `http://<server_root>/source_files` to get started.  The files that `s3_cors_fileupload`'s install generator
 provide you with are just a guide to get you started.  I thought this would be helpful for others since it took me a while to
@@ -99,10 +99,10 @@ the install generator produces.
 ## Notes
 
 The UI version of the [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/)
-javascript uses aspects of [Twitter Bootstrap](http://twitter.github.com/bootstrap/) for styling purposes.
-In index view file from this gem's generator it is included via a `stylesheet_link_tag` to use a copy of it
-[BootstrapCDN](http://www.bootstrapcdn.com/), but if you plan to use bootstrap in more places throughout
-your application, you may want look into using a gem such as
+javascript uses aspects of the [Twitter Bootstrap](http://twitter.github.com/bootstrap/) CSS for styling purposes.
+In the view file created at `s3_uploads/index.html.erb` by this gem's install generator, a copy of the Bootstrap CSS hosted on
+[BootstrapCDN](http://www.bootstrapcdn.com/) is included via a `stylesheet_link_tag`. If you plan to use bootstrap in more
+places throughout your application, you may want look into using a gem such as
 [twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails), which allows you to inject
 the stylesheets and javascripts from bootstrap into the asset pipeline.
 
