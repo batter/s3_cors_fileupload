@@ -1,10 +1,4 @@
-require 'base64'
-require 'openssl'
-require 'digest/sha1'
-
 class S3UploadsController < ApplicationController
-
-  helper_method :s3_upload_policy_document, :s3_upload_signature
 
   # GET /source_files
   # GET /source_files.json
@@ -57,34 +51,6 @@ class S3UploadsController < ApplicationController
       key: "uploads/#{uid}/#{params[:filename]}",
       success_action_redirect: "/"
     }
-  end
-
-  # ---- Helpers ----
-  # generate the policy document that amazon is expecting.
-  def s3_upload_policy_document
-    Base64.encode64(
-      {
-        expiration: 1.hour.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
-        conditions: [
-          { bucket: S3CorsFileupload::Config.bucket },
-          { acl: 'public-read' },
-          { success_action_status: '201' },
-          ["starts-with", "$key", ""],
-          ["starts-with", "$Content-Type", ""]
-        ]
-      }.to_json
-    ).gsub(/\n|\r/, '')
-  end
-
-  # sign our request by Base64 encoding the policy document.
-  def s3_upload_signature
-    Base64.encode64(
-      OpenSSL::HMAC.digest(
-        OpenSSL::Digest::Digest.new('sha1'),
-        S3CorsFileupload::Config.secret_access_key,
-        s3_upload_policy_document
-      )
-    ).gsub(/\n/, '')
   end
 
 end
