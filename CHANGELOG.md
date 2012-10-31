@@ -1,3 +1,7 @@
+## 0.1.5 (Unreleased)
+
+  - Added option to select 'haml' as the language template for the view files on the install generator.
+
 ## 0.1.4
 
   - Added a `data-confirmation` option to the delete buttons and functionality to the jQuery-File-Upload UI's destroy callback that picks up the contents of that attribute to use as a confirmation dialog.  (Fixed the implementation from v0.1.3)  [See the README notes for more details](https://github.com/fullbridge-batkins/s3_cors_fileupload#notes).

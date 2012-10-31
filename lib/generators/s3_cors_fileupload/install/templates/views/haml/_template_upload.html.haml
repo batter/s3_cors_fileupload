@@ -1,0 +1,35 @@
+/ To be used with Javascript-Templates (see: https://github.com/blueimp/JavaScript-Templates)
+/ The template to display files available for upload
+%script#template-upload{:type => "text/x-tmpl"}
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  %tr.template-upload.fade
+    %td.preview
+      %span.fade
+    %td.name
+      %span {%=file.name%}
+    %td.size
+      %span {%=o.formatFileSize(file.size)%}
+    {% if (file.error) { %}
+    %td.error{:colspan => "2"}
+      %span.label.label-important Error
+      {%=file.error%}
+    {% } else if (o.files.valid && !i) { %}
+    %td
+      .progress.progress-success.progress-striped.active
+        .bar{:style => "width:0%;"}
+    %td.start
+      {% if (!o.options.autoUpload) { %}
+      %button.btn.btn-primary
+        %i.icon-upload.icon-white
+        %span Start
+      {% } %}
+    {% } else { %}
+    %td{:colspan => "2"}
+    {% } %}
+    %td.cancel
+      {% if (!i) { %}
+      %button.btn.btn-warning
+        %i.icon-ban-circle.icon-white
+        %span Cancel
+      {% } %}
+  {% } %}

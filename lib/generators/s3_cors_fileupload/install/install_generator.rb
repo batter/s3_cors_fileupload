@@ -7,9 +7,12 @@ module S3CorsFileupload
     class InstallGenerator < ::Rails::Generators::Base
       include ::Rails::Generators::Migration
       extend ActiveRecord::Generators::Migration
+      
+      VALID_TEMPLATE_LANGS = [:erb, :haml]
 
       source_root File.expand_path('../templates', __FILE__)
       class_option :migration, :type => :boolean, :default => true, :desc => "Generate a migration for the SourceFile model."
+      class_option :template_language, :type => :string, :default => 'erb', :desc => "Specify a template language to use for view files, must be one of: [erb, haml]"
 
       desc('Creates a config file, then generates (but does not run) a migration to add a source_files table and ' +
             'a corresponding model, as well as a controller, routes, and views for the file uploading.')
@@ -32,8 +35,10 @@ module S3CorsFileupload
       end
 
       def create_views
-        Dir.foreach(File.expand_path('../templates/views', __FILE__)).reject { |file_name| %w(. ..).include?(file_name) }.each do |file_name|
-          copy_file "views/#{file_name}", "app/views/s3_uploads/#{file_name}"
+        template_language = options.template_language if VALID_TEMPLATE_LANGS.include?(options.template_language.to_sym)
+        template_language ||= 'erb'
+        Dir.foreach(File.expand_path("../templates/views/#{template_language}", __FILE__)).reject { |file_name| %w(. ..).include?(file_name) }.each do |file_name|
+          copy_file "views/#{template_language}/#{file_name}", "app/views/s3_uploads/#{file_name}"
         end
       end
 
