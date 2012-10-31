@@ -9,7 +9,7 @@ module S3CorsFileupload
       extend ActiveRecord::Generators::Migration
 
       source_root File.expand_path('../templates', __FILE__)
-      # class_option :with_controller, :type => :boolean, :default => false, :desc => "Generate controller, views, and routes"
+      class_option :migration, :type => :boolean, :default => true, :desc => "Generate a migration for the SourceFile model."
 
       desc('Creates a config file, then generates (but does not run) a migration to add a source_files table and ' +
             'a corresponding model, as well as a controller, routes, and views for the file uploading.')
@@ -19,7 +19,7 @@ module S3CorsFileupload
       end
 
       def create_migration_file
-        migration_template 'create_source_files.rb', 'db/migrate/create_source_files.rb'
+        migration_template 'create_source_files.rb', 'db/migrate/create_source_files.rb' if options.migration?
       end
 
       def create_model_file
@@ -27,7 +27,6 @@ module S3CorsFileupload
       end
 
       def create_controller
-        # if options.with_controller?
         copy_file 's3_uploads_controller.rb', 'app/controllers/s3_uploads_controller.rb'
         copy_file 's3_uploads.js', 'app/assets/javascripts/s3_uploads.js'
       end

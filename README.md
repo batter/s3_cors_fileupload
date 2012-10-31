@@ -16,7 +16,12 @@ and views for the file uploading.
 
     bundle exec rails generate s3_cors_fileupload:install
 
-Now run the migration that was just generated:
+If you don't want to generate a migration (for instance if you've already run the install generator in the past),
+you can pass in an options `--skip-migration` like so:
+
+   bundle exec rails generate s3_cors_fileupload:install --skip-migration
+
+If you chose to generate a migration, run it now:
 
     bundle exec rake db:migrate
 
