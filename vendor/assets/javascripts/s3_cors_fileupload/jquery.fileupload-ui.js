@@ -534,16 +534,14 @@
 
         _deleteHandler: function (e) {
             e.preventDefault();
-            if (confirm('Are you sure?')) {
-              var button = $(e.currentTarget);
-              this._trigger('destroy', e, {
-                  context: button.closest('.template-download'),
-                  url: button.attr('data-url'),
-                  type: button.attr('data-type') || 'DELETE',
-                  confirm: button.attr('data-confirm'),
-                  dataType: this.options.dataType
-              });
-            }
+            var button = $(e.currentTarget);
+            this._trigger('destroy', e, {
+                context: button.closest('.template-download'),
+                url: button.attr('data-url'),
+                type: button.attr('data-type') || 'DELETE',
+                confirm: button.attr('data-confirm'),
+                dataType: this.options.dataType
+            });
         },
 
         _forceReflow: function (node) {
