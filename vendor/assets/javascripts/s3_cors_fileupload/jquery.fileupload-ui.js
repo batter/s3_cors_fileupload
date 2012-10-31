@@ -539,7 +539,7 @@
                 context: button.closest('.template-download'),
                 url: button.attr('data-url'),
                 type: button.attr('data-type') || 'DELETE',
-                confirm: button.attr('data-confirm'),
+                confirm: button.attr('data-confirmation'),
                 dataType: this.options.dataType
             });
         },
