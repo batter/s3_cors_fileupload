@@ -531,6 +531,7 @@
         },
 
         _deleteHandler: function (e) {
+          if (confirm('Are you sure?')) { 
             e.preventDefault();
             var button = $(e.currentTarget);
             this._trigger('destroy', e, {
@@ -539,6 +540,7 @@
                 type: button.attr('data-type') || 'DELETE',
                 dataType: this.options.dataType
             });
+          }
         },
 
         _forceReflow: function (node) {
