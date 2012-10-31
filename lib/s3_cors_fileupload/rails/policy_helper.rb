@@ -6,7 +6,7 @@ require 'json'
 module S3CorsFileupload
   class PolicyHelper
     attr_reader :options
-    
+
     def initialize(_options = {})
       # default max_file_size to 500 MB if nothing is received
       @options = {
@@ -15,7 +15,7 @@ module S3CorsFileupload
         :bucket => Config.bucket
       }.merge(_options).merge(:secret_access_key => Config.secret_access_key)
     end
-    
+
     # generate the policy document that amazon is expecting.
     def policy_document
       Base64.encode64(

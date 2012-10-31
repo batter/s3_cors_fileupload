@@ -34,13 +34,13 @@ module S3CorsFileupload
     end
 
     alias_method :s3_cors_fileupload_form, :s3_cors_fileupload_form_tag
-    
+
     private
-    
+
     def build_form_options(options = {})
       { :id => 'fileupload' }.merge(options).merge(:multipart => true, :authenticity_token => false)
     end
-    
+
     # hidden fields argument should be a hash of key value pairs (values may be blank if desired)
     def construct_form_html(hidden_fields, bucket, html_options = {}, &block)
       # now build the html for the form

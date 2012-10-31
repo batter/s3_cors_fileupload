@@ -1,5 +1,4 @@
 class S3UploadsController < ApplicationController
-
   # GET /source_files
   # GET /source_files.json
   def index
@@ -52,5 +51,4 @@ class S3UploadsController < ApplicationController
       success_action_redirect: "/"
     }
   end
-
 end
