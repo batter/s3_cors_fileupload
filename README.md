@@ -113,7 +113,7 @@ the stylesheets and javascripts from bootstrap into the asset pipeline.
 
 I have made a slight modification to the jQuery-File-Upload-UI so that the destroy button accepts an optional `data-confirmation`
 attribute, which in turn causes it to show a confirmation dialog to the user before the destroy action happens.  This functionality
-mimics that of Rails's built in [jquery-ujs](https://github.com/rails/jquery-ujs/wiki/Unobtrusive-scripting-support-for-jQuery) behavior for `data-confirm`
+mimics that of Rails's built in [jquery-ujs behavior for `data-confirm`](https://github.com/rails/jquery-ujs/wiki/Unobtrusive-scripting-support-for-jQuery)
 attributes on forms (I named this one `data-confirmation` to prevent jquery-ujs from conflicts).
 The code for this was based off of [pull request #1127 to the jQuery-File-Upload project](https://github.com/blueimp/jQuery-File-Upload/pull/1127),
 which appears to have been rejected by the author of jQuery-File-Upload, but seems appropriate for rails.  If you wish not to use it,
