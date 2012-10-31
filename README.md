@@ -93,12 +93,12 @@ the UI version of the [jQuery-File-Upload javascript](http://blueimp.github.com/
 This view helper accepts the following options:
 
 * `:access_key_id` - The AWS Access Key ID of the owner of the bucket.  Defaults to the `Config.access_key_id` (read from the `config/amazon_s3.yml` config file).
-* `:acl` - One of S3's Canned Access Control Lists, must be one of: 'private', 'public-read', 'public-read-write', 'authenticated-read'.  Defaults to `'public-read'`.
+* `:acl` - One of S3's Canned Access Control Lists, must be one of: `'private'`, `'public-read'`, `'public-read-write'`, `'authenticated-read'`.  Defaults to `'public-read'`.
 * `:max_file_size` - The max file size (in bytes) that you wish to allow to be uploaded.  Defaults to `Config.max_file_size` (read from the `config/amazon_s3.yml` config file) or, if no value is set on the `config/amazon_s3.yml` file, defaults to `524288000` (500 MB)
 * `:bucket` - The name of the bucket on S3 you wish for the files to be uploaded to.  Defaults to `Config.bucket` (read from the `config/amazon_s3.yml` config file).
 * Any other key creates standard HTML options for the form tag.
 
-For an example of how to use the helper, see the file located at `app/views/s3_uploads/index.html.erb` that
+For an example of how to use the form view helper, see the file located at `app/views/s3_uploads/index.html.erb` that
 the install generator produces.
 
 ## Notes
