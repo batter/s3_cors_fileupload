@@ -293,6 +293,8 @@
             },
             // Callback for file deletion:
             destroy: function (e, data) {
+                if (data.confirm && !confirm(data.confirm))
+                  return; // abort the deletion if the user rejects the confirmation dialog
                 var that = $(this).data('fileupload');
                 if (data.url) {
                     $.ajax(data);
@@ -531,16 +533,17 @@
         },
 
         _deleteHandler: function (e) {
-          if (confirm('Are you sure?')) { 
             e.preventDefault();
-            var button = $(e.currentTarget);
-            this._trigger('destroy', e, {
-                context: button.closest('.template-download'),
-                url: button.attr('data-url'),
-                type: button.attr('data-type') || 'DELETE',
-                dataType: this.options.dataType
-            });
-          }
+            if (confirm('Are you sure?')) {
+              var button = $(e.currentTarget);
+              this._trigger('destroy', e, {
+                  context: button.closest('.template-download'),
+                  url: button.attr('data-url'),
+                  type: button.attr('data-type') || 'DELETE',
+                  confirm: button.attr('data-confirm'),
+                  dataType: this.options.dataType
+              });
+            }
         },
 
         _forceReflow: function (node) {

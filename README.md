@@ -111,6 +111,13 @@ places throughout your application, you may want look into using a gem such as
 [twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails), which allows you to inject
 the stylesheets and javascripts from bootstrap into the asset pipeline.
 
+I have made a slight modification to the jQuery-File-Upload-UI so that the destroy button accepts an optional `data-confirm`
+attribute, which in turn causes it to show a confirmation dialog to the user before the destroy action happens.  This functionality
+mimics that of Rails's built in [jquery-ujs](https://github.com/rails/jquery-ujs/wiki/Unobtrusive-scripting-support-for-jQuery) behavior.
+The code for this was based off of [pull request #1127 to the jQuery-File-Upload project](https://github.com/blueimp/jQuery-File-Upload/pull/1127),
+which appears to have been rejected by the author of jQuery-File-Upload, but seems appropriate for rails.  If you wish not to use it,
+simply remove the `data-confirm` attribute from the destroy button on `_template_uploaded.html.erb` in the views directory.
+
 ## Contributing to S3CorsFileupload
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
