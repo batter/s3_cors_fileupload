@@ -1,4 +1,7 @@
 .rvmrc
+spec/dummy/db/*.sqlite3
+spec/dummy/log/*.log
+spec/dummy/tmp
 
 # rcov generated
 coverage
@@ -29,7 +32,6 @@ pkg
 # Not sure what to needs to be ignored for particular editors/OSes? Here's some ideas to get you started. (Remember, remove the leading # of the line)
 #
 # For MacOS:
-#
 #.DS_Store
 
 # For TextMate
@@ -43,9 +45,3 @@ pkg
 
 # For vim:
 #*.swp
-
-# For redcar:
-#.redcar
-
-# For rubinius:
-#*.rbc
