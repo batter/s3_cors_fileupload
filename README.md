@@ -18,12 +18,12 @@ and views for the file uploading.
 
 If you are using HAML as the template language for your app, you can make the install generator produce HAML view files:
 
-    bundle exec rails generate s3_cors_fileupload:install --template_language=haml
+    bundle exec rails g s3_cors_fileupload:install --template_language=haml
 
 If you don't want to generate a migration (for instance if you've already run the install generator in the past),
 you can pass in an options `--skip-migration` like so:
 
-    bundle exec rails generate s3_cors_fileupload:install --skip-migration
+    bundle exec rails g s3_cors_fileupload:install --skip-migration
 
 If you chose to generate a migration, run it now:
 
@@ -31,7 +31,7 @@ If you chose to generate a migration, run it now:
 
 Also, as you may have noticed, a config file was generated at `config/amazon_s3.yml`.  Edit this file and fill in
 the fields with your AWS S3 credentials.  If you don't want to commit your S3 account credentials to your
-repository, you can make the config load from environment variables like so:
+repository, you can make the config load from environment variables like so (this functionality is fixed as of version `0.1.5`):
 
     secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
 

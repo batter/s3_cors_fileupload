@@ -1,6 +1,7 @@
 ## 0.1.5 (Unreleased)
 
   - Added option to select 'haml' as the language template for the view files on the install generator.
+  - Fixed `S3CorsFileupload::Config` YAML initializer so that it properly reads in ERB statements.
 
 ## 0.1.4
 

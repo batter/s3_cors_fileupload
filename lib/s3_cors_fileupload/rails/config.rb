@@ -17,7 +17,7 @@ module S3CorsFileupload
       private
 
       def config
-        @config ||= YAML.load_file(File.join(::Rails.root, 'config', 'amazon_s3.yml'))[::Rails.env]
+        @config ||= YAML.load(ERB.new(File.read(File.join(::Rails.root, 'config', 'amazon_s3.yml'))).result)[::Rails.env]
       rescue
         warn('WARNING: s3_cors_fileupload gem was unable to locate a configuration file in config/amazon_s3.yml and may not ' +
              'be able to function properly.  Please run `rails generate s3_cors_upload:install` before proceeding.')
