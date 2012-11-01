@@ -27,11 +27,13 @@ Rake::RDocTask.new do |rdoc|
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "s3_cors_fileupload #{version}"
+  rdoc.rdoc_files.include('LICENSE*')
   rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('CHANGELOG*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-desc "Open an irb session preloaded with this library"
+desc 'Open an irb session preloaded with this library'
 task :console do
-  sh "irb -I lib -r s3_cors_fileupload.rb"
+  sh 'irb -I lib -r s3_cors_fileupload.rb'
 end

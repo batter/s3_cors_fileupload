@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ]
 end
