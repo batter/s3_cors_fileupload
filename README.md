@@ -18,7 +18,7 @@ and views for the file uploading.
 
 If you are using HAML as the template language for your app, you can make the install generator produce HAML view files:
 
-    bundle exec rails g s3_cors_fileupload:install --template_language=haml
+    bundle exec rails g s3_cors_fileupload:install --template-language=haml
 
 If you don't want to generate a migration (for instance if you've already run the install generator in the past),
 you can pass in an options `--skip-migration` like so:
