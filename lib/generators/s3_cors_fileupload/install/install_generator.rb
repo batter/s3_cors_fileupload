@@ -7,7 +7,7 @@ module S3CorsFileupload
     class InstallGenerator < ::Rails::Generators::Base
       include ::Rails::Generators::Migration
       extend ActiveRecord::Generators::Migration
-      
+
       VALID_TEMPLATE_LANGS = [:erb, :haml]
 
       source_root File.expand_path('../templates', __FILE__)
