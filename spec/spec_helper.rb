@@ -1,6 +1,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path('../dummy/config/environment', __FILE__)
-# the gem's library gets included through the a require statement on 'dummy/config/application.rb'
+# the gem's library gets included through a require statement on 'dummy/config/application.rb'
 require 'rspec/rails'
 require 'rspec/autorun'
 
