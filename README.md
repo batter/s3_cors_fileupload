@@ -16,7 +16,8 @@ and views for the file uploading.
 
     bundle exec rails generate s3_cors_fileupload:install
 
-If you are using HAML as the template language for your app, you can make the install generator produce HAML view files:
+If you are using HAML as the template language for your app, the install generator has an option to produce
+HAML view files (the default is ERB):
 
     bundle exec rails g s3_cors_fileupload:install --template-language=haml
 
