@@ -1,3 +1,7 @@
+## 0.1.6 (Unreleased)
+
+  - Adjusted the `s3_cors_fileupload_form_tag` view helper so that block arguments passed to it are inserted inside of the form tag as opposed to the end of it.
+
 ## 0.1.5
 
   - Added option to select 'haml' as the language template for the view files on the install generator.
