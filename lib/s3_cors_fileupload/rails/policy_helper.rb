@@ -20,7 +20,7 @@ module S3CorsFileupload
     def policy_document
       Base64.encode64(
         {
-          expiration: 1.hour.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
+          expiration: 10.hours.from_now.utc.iso8601(3),
           conditions: [
             { bucket: options[:bucket] },
             { acl: options[:acl] },

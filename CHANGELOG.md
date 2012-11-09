@@ -1,6 +1,7 @@
 ## 0.1.6 (Unreleased)
 
   - Adjusted the `s3_cors_fileupload_form_tag` view helper so that block arguments passed to it are inserted inside of the form tag as opposed to the end of it.
+  - Changed the default expiration time for the form from 1 hour to 10 hours.
 
 ## 0.1.5
 
