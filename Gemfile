@@ -11,4 +11,5 @@ group :test do
   gem 'sqlite3' # the database driver for rails
   gem 'rspec-rails', '~> 2.11'
   gem 'shoulda-matchers'
+  gem 'generator_spec'
 end
