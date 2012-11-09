@@ -44,7 +44,7 @@ module S3CorsFileupload
     # hidden fields argument should be a hash of key value pairs (values may be blank if desired)
     def construct_form_html(hidden_fields, bucket, html_options = {}, &block)
       # now build the html for the form
-      form_text = form_tag("https://#{bucket}.s3.amazonaws.com", build_form_options(html_options)) do
+      form_tag("https://#{bucket}.s3.amazonaws.com", build_form_options(html_options)) do
         hidden_fields.map do |name, value|
           hidden_field_tag(name, value)
         end.join.html_safe + "
@@ -84,10 +84,8 @@ module S3CorsFileupload
         <!-- The table listing the files available for upload/download -->
         <table class='table table-striped' id='upload_files'>
           <tbody class='files' data-target='#modal-gallery' data-toggle='modal-gallery'></tbody>
-        </table>".html_safe
+        </table>".html_safe + (block ? capture(&block) : '')
       end
-      form_text += capture(&block) if block
-      form_text
     end
   end
 end
