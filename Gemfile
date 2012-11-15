@@ -9,7 +9,7 @@ group :test do
   gem 'rails', '~> 3.2'
   # gem 'jquery-rails' # would be necessary if we were to do UI testing on the dummy app
   gem 'sqlite3' # the database driver for rails
-  gem 'rspec-rails', '~> 2.11'
+  gem 'rspec-rails', '~> 2.12'
   gem 'shoulda-matchers'
   gem 'generator_spec'
 end
