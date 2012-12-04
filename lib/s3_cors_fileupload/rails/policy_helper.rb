@@ -38,7 +38,7 @@ module S3CorsFileupload
     def upload_signature
       Base64.encode64(
         OpenSSL::HMAC.digest(
-          OpenSSL::Digest::Digest.new('sha1'),
+          OpenSSL::Digest::SHA1.new,
           options[:secret_access_key],
           self.policy_document
         )
