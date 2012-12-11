@@ -11,24 +11,22 @@ Gem::Specification.new do |s|
   s.summary     = "File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
   s.description = "Provides file uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload javascript"
   s.licenses    = ["MIT"]
-  
+
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.rubygems_version = "1.8.24"
-  
+
   s.add_dependency('rails', ['~> 3.1'])
   s.add_dependency('jquery-rails', ['>= 2.0'])
   s.add_dependency('aws-s3', ['~> 0.6']) # :require => 'aws/s3'
-  
+
   s.add_development_dependency('rake', [">= 0.8.7"])
   s.add_development_dependency('bundler', [">= 0"])
-  
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_paths = ['lib']
-  s.extra_rdoc_files = [
-    "LICENSE.txt",
-    "README.md",
-    "CHANGELOG.md"
-  ]
+
+  s.extra_rdoc_files = %w(README.md CHANGELOG.md LICENSE.txt)
+  s.rdoc_options = %w(--charset=UTF-8)
 end
