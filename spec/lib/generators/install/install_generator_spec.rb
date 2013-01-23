@@ -114,14 +114,13 @@ describe S3CorsFileupload::Generators::InstallGenerator do
   end # end of describe "no options" block
 
   describe "`migration` option set to `false`" do
-    arguments %w(--skip-migration)
     before(:all) do
       prepare_destination
       # --setup a dummy routes file--
       mkdir_p ::File.dirname(::File.expand_path('../../tmp/config/routes.rb', __FILE__))
       copy_file ::File.expand_path('../../../../dummy/config/routes.rb', __FILE__), ::File.expand_path('../../tmp/config/routes.rb', __FILE__)
       # --
-      run_generator
+      run_generator %w(--skip-migration)
     end
 
     it "should not generate a migration" do
@@ -130,6 +129,31 @@ describe S3CorsFileupload::Generators::InstallGenerator do
       }
     end
   end # end of describe "`migration` option set to `false`" block
+
+  describe "`template-language` option set to `haml`" do
+    before(:all) do
+      prepare_destination
+      # --setup a dummy routes file--
+      mkdir_p ::File.dirname(::File.expand_path('../../tmp/config/routes.rb', __FILE__))
+      copy_file ::File.expand_path('../../../../dummy/config/routes.rb', __FILE__), ::File.expand_path('../../tmp/config/routes.rb', __FILE__)
+      # --
+      run_generator %w(--template-language=haml)
+    end
+
+    it "generates view files (in HAML)" do
+      destination_root.should have_structure {
+        directory 'app' do
+          directory 'views' do
+            directory 's3_uploads' do
+              Dir.foreach(File.expand_path("../../../../../lib/generators/s3_cors_fileupload/install/templates/views/haml", __FILE__)).reject { |file_name| %w(. ..).include?(file_name) }.each do |file_name|
+                file file_name
+              end
+            end
+          end
+        end
+      }
+    end
+  end # end of "`template-language` option set to `haml`" block
 
   after(:all) { prepare_destination } # cleanup the tmp directory
 
