@@ -15,5 +15,5 @@ group :test do
   gem 'rails', '~> 3.2'
   # gem 'jquery-rails' # would be necessary to do UI testing on the dummy app
   gem 'sqlite3' # the database driver for rails
-  gem 'aws-s3'
+  gem 'aws-s3', :require => 'aws/s3'
 end
