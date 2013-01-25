@@ -24,7 +24,7 @@ task :default => :spec
 # task :default => :test
 
 require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
+RDoc::Task.new do |rdoc|
   require File.expand_path('../lib/s3_cors_fileupload/version', __FILE__)
 
   rdoc.rdoc_dir = 'rdoc'
