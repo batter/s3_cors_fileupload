@@ -7,7 +7,7 @@ require "action_controller/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
 
-Bundler.require
+Bundler.require(::Rails.env)
 require 's3_cors_fileupload'
 
 module Dummy
