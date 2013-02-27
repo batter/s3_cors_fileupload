@@ -122,7 +122,7 @@ mimics that of Rails's built in [jquery-ujs behavior for `data-confirm`](https:/
 attributes on forms (I named this one `data-confirmation` to prevent jquery-ujs from conflicts).
 The code for this was based off of [pull request #1127 to the jQuery-File-Upload project](https://github.com/blueimp/jQuery-File-Upload/pull/1127),
 which appears to have been rejected by the author of jQuery-File-Upload, but seems appropriate for rails.  If you wish not to use it,
-simply remove the `data-confirm` attribute from the destroy button on `_template_uploaded.html.erb` in the views directory.
+simply remove the `data-confirmation` attribute from the destroy button on `_template_uploaded.html.erb` in the views directory.
 
 ## Contributing to S3CorsFileupload
  
