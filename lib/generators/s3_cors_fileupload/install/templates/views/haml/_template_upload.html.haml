@@ -17,18 +17,18 @@
     %td
       .progress.progress-success.progress-striped.active
         .bar{:style => "width:0%;"}
-    %td.start
+    %td
       {% if (!o.options.autoUpload) { %}
-      %button.btn.btn-primary
+      %button.btn.btn-primary.start
         %i.icon-upload.icon-white
         %span Start
       {% } %}
     {% } else { %}
     %td{:colspan => "2"}
     {% } %}
-    %td.cancel
+    %td
       {% if (!i) { %}
-      %button.btn.btn-warning
+      %button.btn.btn-warning.cancel
         %i.icon-ban-circle.icon-white
         %span Cancel
       {% } %}

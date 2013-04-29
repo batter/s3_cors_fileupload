@@ -15,7 +15,7 @@
     <td class="size"><span>{%=formatFileSize(o.size)%}</span></td>
     <td colspan="2"></td>
     <td class="delete">
-      <button class="btn btn-danger" data-type="DELETE" data-url="{%=o.delete_url%}" data-confirmation="Are you sure?">
+      <button class="btn btn-danger delete" data-type="DELETE" data-url="{%=o.delete_url%}" data-confirmation="Are you sure?" {% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
         <i class="icon-trash icon-white"></i>
         <span>Delete</span>
       </button>

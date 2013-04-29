@@ -24,8 +24,8 @@
       %span {%=$('#fileupload').formatFileSize(file.size)%}
     %td{:colspan => "2"}
     {% } %}
-    %td.delete
-      %button.btn.btn-danger{"data-type" => "{%=file.delete_type%}", "data-url" => "{%=file.delete_url%}", "data-confirmation" => "Are you sure?"}
+    %td
+      %button.btn.btn-danger.delete{"data-type" => "{%=file.delete_type%}", "data-url" => "{%=file.delete_url%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
         %i.icon-trash.icon-white
         %span Delete
       %input{:name => "delete", :type => "checkbox", :value => "1"}

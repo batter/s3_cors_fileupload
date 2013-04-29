@@ -11,8 +11,8 @@
     <td>
       <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
     </td>
-    <td class="start">{% if (!o.options.autoUpload) { %}
-      <button class="btn btn-primary">
+    <td>{% if (!o.options.autoUpload) { %}
+      <button class="btn btn-primary start">
         <i class="icon-upload icon-white"></i>
         <span>Start</span>
       </button>
@@ -20,8 +20,8 @@
     {% } else { %}
     <td colspan="2"></td>
     {% } %}
-    <td class="cancel">{% if (!i) { %}
-      <button class="btn btn-warning">
+    <td>{% if (!i) { %}
+      <button class="btn btn-warning cancel">
         <i class="icon-ban-circle icon-white"></i>
         <span>Cancel</span>
       </button>

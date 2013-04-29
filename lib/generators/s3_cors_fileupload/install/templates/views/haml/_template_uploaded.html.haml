@@ -14,8 +14,8 @@
     %td.size
       %span {%=formatFileSize(o.size)%}
     %td{:colspan => "2"}
-    %td.delete
-      %button.btn.btn-danger{"data-type" => "DELETE", "data-url" => "{%=o.delete_url%}", "data-confirmation" => "Are you sure?"}
+    %td
+      %button.btn.btn-danger.delete{"data-type" => "DELETE", "data-url" => "{%=o.delete_url%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
         %i.icon-trash.icon-white
         %span Delete
       %input{:name => "delete", :type => "checkbox", :value => "1"}
