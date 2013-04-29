@@ -7,7 +7,7 @@ require "action_controller/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
 
-Bundler.require(::Rails.env)
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 require 's3_cors_fileupload'
 
 module Dummy
@@ -55,7 +55,7 @@ module Dummy
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.enabled = true
+    config.assets.enabled = false
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

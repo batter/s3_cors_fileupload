@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'rdoc', '~> 3.12'
-  gem 'gem-release', '~> 0.4'
+  gem 'gem-release', '~> 0.5'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 2.12'
-  gem 'shoulda-matchers'
+  gem 'rspec-rails', '~> 2.13'
+  gem 'shoulda-matchers', '~> 2.0'
   gem 'generator_spec'
   gem 'ffaker'
 
