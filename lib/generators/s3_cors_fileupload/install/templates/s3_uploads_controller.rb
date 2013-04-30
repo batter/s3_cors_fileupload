@@ -6,7 +6,7 @@ class S3UploadsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @source_files.map{|sf| sf.to_jq_upload } }
+      format.json { render json: @source_files.map(&:to_jq_upload) }
     end
   end
 
