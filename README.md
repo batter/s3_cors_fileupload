@@ -3,6 +3,18 @@
 A gem to allow for uploading of files to directly AWS-S3 via [CORS](http://www.w3.org/TR/cors/) using the
 [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) for Rails 3.1 and greater.
 
+### Included JavaScript plugin versions
+
+* jQuery File Upload User Interface Plugin 7.4.1
+* jQuery File Upload Plugin 5.26
+* jQuery UI Widget 1.10.1+amd
+
+### Upgrade notes for `0.2.0` release
+
+If you are upgrading from version `0.1.x`, please re-run the install generator with the `--skip-migration` option.
+The view templates (`_template_download`, `_template_upload`, `_template_uploaded`) have changed to be compatible with
+the new version of the jQuery-File-Upload UI JavaScript.
+
 ## Installation
 Add this line to your application's Gemfile:
 
