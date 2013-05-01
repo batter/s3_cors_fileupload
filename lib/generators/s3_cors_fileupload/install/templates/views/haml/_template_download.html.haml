@@ -19,7 +19,7 @@
         %img{:src => "{%=file.thumbnail_url%}"}/
       {% } %}
     %td.name
-      %a{:download => "{%=file.name%}", :href => "{%=file.url%}", :rel => "{%=file.thumbnail_url&&'gallery'%}", :title => "{%=file.name%}"} {%=file.name%}
+      %a{:download => "{%=file.name%}", :href => "{%=file.url%}", :rel => "{%=file.thumbnail_url&&'gallery'%}".html_safe, :title => "{%=file.name%}"} {%=file.name%}
     %td.size
       %span {%=$('#fileupload').formatFileSize(file.size)%}
     %td{:colspan => "2"}
