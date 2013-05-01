@@ -10,8 +10,8 @@
     %td.size
       %span {%=o.formatFileSize(file.size)%}
     %td.error{:colspan => "2"}
-      %span.label.label-important {%=locale.fileupload.error%}
-      {%=locale.fileupload.errors[file.error] || file.error%}
+      %span.label.label-important Error
+      {%=file.error%}
     {% } else { %}
     %td.preview
       {% if (file.thumbnail_url) { %}
