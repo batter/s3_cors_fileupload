@@ -3,6 +3,7 @@
   - Upgraded jQuery-File-Upload and the other JavaScript files it is dependent upon to the most recent releases (see [lib/s3\_cors\_fileupload/version.rb](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/master/lib/s3_cors_fileupload/version.rb) for the current version #'s)
   - Adjusted the `s3_cors_fileupload_form_tag` view helper so that block arguments passed to it are inserted inside of the form tag as opposed to the end of it.
   - Changed the default expiration time for the form from 1 hour to 10 hours.
+  - Swapped in [MultiJSON](https://github.com/intridea/multi_json) for the JSON gem.
 
 ## 0.1.5
 

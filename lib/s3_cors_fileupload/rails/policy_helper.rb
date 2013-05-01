@@ -1,7 +1,7 @@
 require 'base64'
 require 'openssl'
 require 'digest/sha1'
-require 'json'
+require 'multi_json'
 
 module S3CorsFileupload
   class PolicyHelper
@@ -19,18 +19,20 @@ module S3CorsFileupload
     # generate the policy document that amazon is expecting.
     def policy_document
       Base64.encode64(
-        {
-          expiration: 10.hours.from_now.utc.iso8601(3),
-          conditions: [
-            { bucket: options[:bucket] },
-            { acl: options[:acl] },
-            { success_action_status: '201' },
-            ["content-length-range", 0, options[:max_file_size]],
-            ["starts-with", "$utf8", ""],
-            ["starts-with", "$key", ""],
-            ["starts-with", "$Content-Type", ""]
-          ]
-        }.to_json
+        MultiJson.dump(
+          {
+            expiration: 10.hours.from_now.utc.iso8601(3),
+            conditions: [
+              { bucket: options[:bucket] },
+              { acl: options[:acl] },
+              { success_action_status: '201' },
+              ["content-length-range", 0, options[:max_file_size]],
+              ["starts-with", "$utf8", ""],
+              ["starts-with", "$key", ""],
+              ["starts-with", "$Content-Type", ""]
+            ]
+          }
+        )
       ).gsub(/\n|\r/, '')
     end
 
