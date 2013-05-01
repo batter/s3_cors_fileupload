@@ -18,33 +18,35 @@ module S3CorsFileupload
 
     # generate the policy document that amazon is expecting.
     def policy_document
-      Base64.encode64(
-        MultiJson.dump(
-          {
-            expiration: 10.hours.from_now.utc.iso8601(3),
-            conditions: [
-              { bucket: options[:bucket] },
-              { acl: options[:acl] },
-              { success_action_status: '201' },
-              ["content-length-range", 0, options[:max_file_size]],
-              ["starts-with", "$utf8", ""],
-              ["starts-with", "$key", ""],
-              ["starts-with", "$Content-Type", ""]
-            ]
-          }
-        )
-      ).gsub(/\n|\r/, '')
+      @policy_document ||=
+        Base64.encode64(
+          MultiJson.dump(
+            {
+              expiration: 10.hours.from_now.utc.iso8601(3),
+              conditions: [
+                { bucket: options[:bucket] },
+                { acl: options[:acl] },
+                { success_action_status: '201' },
+                ["content-length-range", 0, options[:max_file_size]],
+                ["starts-with", "$utf8", ""],
+                ["starts-with", "$key", ""],
+                ["starts-with", "$Content-Type", ""]
+              ]
+            }
+          )
+        ).gsub(/\n/, '')
     end
 
     # sign our request by Base64 encoding the policy document.
     def upload_signature
-      Base64.encode64(
-        OpenSSL::HMAC.digest(
-          OpenSSL::Digest::SHA1.new,
-          options[:secret_access_key],
-          self.policy_document
-        )
-      ).gsub(/\n/, '')
+      @upload_signature ||=
+        Base64.encode64(
+          OpenSSL::HMAC.digest(
+            OpenSSL::Digest::SHA1.new,
+            options[:secret_access_key],
+            self.policy_document
+          )
+        ).gsub(/\n/, '')
     end
   end
 end

@@ -21,7 +21,7 @@ module S3CorsFileupload
       hidden_form_fields = {
         :key => '',
         'Content-Type' => '',
-        'AWSAccessKeyId' => options[:access_key_id] || Config.access_key_id,
+        :AWSAccessKeyId => options[:access_key_id] || Config.access_key_id,
         :acl => policy_helper.options[:acl],
         :policy => policy_helper.policy_document,
         :signature => policy_helper.upload_signature,
