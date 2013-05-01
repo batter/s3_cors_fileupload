@@ -6,8 +6,8 @@
 
   <div class="javascript-templates">
     <%= render 'template_upload' %>
+    <%= render 'template_download' %>
     <%= render 'template_uploaded' %>
-    <%# render 'template_download' %>
   </div>
 </div>
 
@@ -17,9 +17,7 @@
       // Initialize the jQuery File Upload widget:
       $('#fileupload').fileupload({
         dataType: 'xml',
-        sequentialUploads: true,
-        downloadTemplateId: null,
-        downloadTemplate: null
+        sequentialUploads: true
       });
       
       // Load existing files:
