@@ -57,33 +57,35 @@ module S3CorsFileupload
               ".html_safe +
               file_field_tag(:file, :multiple => true) + "
             </span>
-            <button class='btn btn-primary start' type='submit'>
+            <button type='submit' class='btn btn-primary start'>
               <i class='icon-upload icon-white'></i>
               <span>Start upload</span>
             </button>
-            <button class='btn btn-warning cancel' type='reset'>
+            <button type='reset' class='btn btn-warning cancel'>
               <i class='icon-ban-circle icon-white'></i>
               <span>Cancel upload</span>
             </button>
-            <button class='btn btn-danger delete' type='button'>
+            <button type='button' class='btn btn-danger delete'>
               <i class='icon-trash icon-white'></i>
               <span>Delete</span>
             </button>
-            <input class='toggle' type='checkbox'></input>
+            <input type='checkbox' class='toggle'></input>
+            <!-- The loading indicator is shown during file processing -->
+	          <span class='fileupload-loading'></span>
           </div>
-          <div class='span5'>
+          <!-- The global progress information -->
+          <div class='span5 fileupload-progress fade'>
             <!-- The global progress bar -->
-            <div class='progress progress-success progress-striped active fade'>
-              <div class='bar' style='width: 0%'></div>
+            <div class='progress progress-success progress-striped active' role='progressbar' aria-valuemin='0' aria-valuemax='100'>
+              <div class='bar' style='width: 0%;'></div>
             </div>
+            <!-- The extended global progress information -->
+            <div class='progress-extended'>&nbsp;</div>
           </div>
         </div>
-        <!-- The loading indicator is shown during image processing -->
-        <div class='fileupload-loading'></div>
-        <br>
         <!-- The table listing the files available for upload/download -->
-        <table class='table table-striped' id='upload_files'>
-          <tbody class='files' data-target='#modal-gallery' data-toggle='modal-gallery'></tbody>
+        <table role='presentation' class='table table-striped' id='upload_files'>
+          <tbody class='files'></tbody>
         </table>".html_safe + (block ? capture(&block) : '')
       end
     end

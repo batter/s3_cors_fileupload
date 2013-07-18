@@ -2,24 +2,29 @@
 <!-- This essentially is a stand-in for the template_download partial for the s3_cors_fileupload gem's purposes -->
 <script id="template-uploaded" type="text/x-tmpl">
   <tr class="template-uploaded" id="source_file_{%=o.id%}">
-    <td class="preview">
-      {% if (o.image == true) { %}
-        <a href="{%=o.url%}" title="{%=o.name%}" rel="gallery" download="{%=o.name%}">
-          <image src="{%=o.url%}", style='width:80px; height:56px;'></image>
-        </a>
-      {% } %}
+    <td>
+      <span class="preview">
+        {% if (o.image == true) { %}
+          <a href="{%=o.url%}" title="{%=o.name%}" download="{%=o.name%}" data-gallery>
+            <image src="{%=o.url%}", style='width:80px; height:56px;'></image>
+          </a>
+        {% } %}
+      </span>
     </td>
-    <td class="name">
-      <a href="{%=o.url%}" title="{%=o.name%}" rel="{%=o.thumbnail_url&&'gallery'%}" download="{%=o.name%}">{%=o.name%}</a>
+    <td>
+      <p class="name">
+        <a href="{%=o.url%}" title="{%=o.name%}" download="{%=o.name%}" {%=o.image ? 'data-gallery' : ''%}>{%=o.name%}</a>
+      </p>
     </td>
-    <td class="size"><span>{%=formatFileSize(o.size)%}</span></td>
-    <td colspan="2"></td>
-    <td class="delete">
-      <button class="btn btn-danger delete" data-type="DELETE" data-url="{%=o.delete_url%}" data-confirmation="Are you sure?" {% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+    <td>
+      <span class="size">{%=formatFileSize(o.size)%}</span>
+    </td>
+    <td>
+      <button class="btn btn-danger delete" data-type="DELETE" data-url="{%=o.delete_url%}" data-confirmation="Are you sure?" {% if (o.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
         <i class="icon-trash icon-white"></i>
         <span>Delete</span>
       </button>
-      <input type="checkbox" name="delete" value="1">
+      <input type="checkbox" name="delete" value="1" class="toggle">
     </td>
   </tr>
 </script>

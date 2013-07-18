@@ -3,30 +3,25 @@
 %script#template-download{:type => "text/x-tmpl"}
   {% for (var i=0, file; file=o.files[i]; i++) { %}
   %tr.template-download.fade
-    {% if (file.error) { %}
     %td
-    %td.name
-      %span {%=file.name%}
-    %td.size
-      %span {%=o.formatFileSize(file.size)%}
-    %td.error{:colspan => "2"}
-      %span.label.label-important Error
-      {%=file.error%}
-    {% } else { %}
-    %td.preview
-      {% if (file.thumbnail_url) { %}
-      %a{:download => "{%=file.name%}", :href => "{%=file.url%}", :rel => "gallery", :title => "{%=file.name%}"}
-        %img{:src => "{%=file.thumbnail_url%}"}/
+      %span.preview
+        {% if (file.thumbnailUrl) { %}
+        %a{:download => "{%=file.name%}", :href => "{%=file.url%}", :title => "{%=file.name%}", :"data-gallery" => ''}
+          %img{:src => "{%=file.thumbnailUrl%}"}/
+        {% } %}
+    %td
+      %p.name
+        %a{:href => "{%=file.url%}", :title => "{%=file.name%}", :download => "{%=file.name%}", :"data-gallery" => !"{%= file.thumbnailUrl ? ' ' : '' %}".html_safe.empty? && ''} {%=file.name%}
+      {% if (file.error) { %}
+      %div
+        %span.label.label-important Error
+        {%=file.error%}
       {% } %}
-    %td.name
-      %a{:download => "{%=file.name%}", :href => "{%=file.url%}", :rel => "{%=file.thumbnail_url&&'gallery'%}".html_safe, :title => "{%=file.name%}"} {%=file.name%}
-    %td.size
-      %span {%=$('#fileupload').formatFileSize(file.size)%}
-    %td{:colspan => "2"}
-    {% } %}
+    %td
+      %span.size {%=o.formatFileSize(file.size)%}
     %td
       %button.btn.btn-danger.delete{"data-type" => "{%=file.delete_type%}", "data-url" => "{%=file.delete_url%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
         %i.icon-trash.icon-white
         %span Delete
-      %input{:name => "delete", :type => "checkbox", :value => "1"}
+      %input.toggle{:name => "delete", :type => "checkbox", :value => "1"}
   {% } %}

@@ -2,20 +2,19 @@
 / The template to display files that have been uploaded to S3 already
 %script#template-uploaded{:type => "text/x-tmpl"}
   %tr.template-uploaded{:id => "source_file_{%=o.id%}"}
-    {% if (o.image == true) { %}
-    %td.preview
-      %a{:download => "{%=o.name%}", :href => "{%=o.url%}", :rel => "gallery", :title => "{%=o.name%}"}
-        %img{:src => "{%=o.url%}", :style => 'width:80px; height:56px;'}
-    {% } else { %}
     %td
-    {% } %}
-    %td.name
-      %a{:download => "{%=o.name%}", :href => "{%=o.url%}", :rel => "{%=o.thumbnail_url&&'gallery'%}".html_safe, :title => "{%=o.name%}"} {%=o.name%}
-    %td.size
-      %span {%=formatFileSize(o.size)%}
-    %td{:colspan => "2"}
+      %span.preview
+        {% if (o.image == true) { %}
+        %a{:download => "{%=o.name%}", :href => "{%=o.url%}", :title => "{%=o.name%}", :"data-gallery" => ''}
+          %img{:src => "{%=o.url%}", :style => 'width:80px; height:56px;'}
+        {% } %}
     %td
-      %button.btn.btn-danger.delete{"data-type" => "DELETE", "data-url" => "{%=o.delete_url%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
+      %p.name
+        %a{:href => "{%=o.url%}", :title => "{%=o.name%}", :download => "{%=o.name%}", :"data-gallery" => !"{%= o.thumbnailUrl ? 'true' : '' %}".html_safe.empty? && ''} {%=o.name%}
+    %td
+      %span.size {%=formatFileSize(o.size)%}
+    %td
+      %button.btn.btn-danger.delete{"data-type" => "DELETE", "data-url" => "{%=o.delete_url%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (o.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (o.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
         %i.icon-trash.icon-white
         %span Delete
-      %input{:name => "delete", :type => "checkbox", :value => "1"}
+      %input.toggle{:name => "delete", :type => "checkbox", :value => "1"}
