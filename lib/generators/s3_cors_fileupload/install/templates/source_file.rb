@@ -24,7 +24,7 @@ class SourceFile < ActiveRecord::Base
       'size' => file_size,
       'url' => url,
       'image' => self.is_image?,
-      'delete_url' => Rails.application.routes.url_helpers.source_file_path(self)
+      'delete_url' => Rails.application.routes.url_helpers.source_file_path(self, :format => :json)
     }
   end
 

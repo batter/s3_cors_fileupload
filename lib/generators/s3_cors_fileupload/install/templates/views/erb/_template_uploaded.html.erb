@@ -20,7 +20,7 @@
       <span class="size">{%=formatFileSize(o.size)%}</span>
     </td>
     <td>
-      <button class="btn btn-danger delete" data-type="DELETE" data-url="{%=o.delete_url%}" data-confirmation="Are you sure?" {% if (o.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+      <button class="btn btn-danger delete" data-type="DELETE" data-url="{%=o.delete_url%}" data-object_id="{%=o.id%}" data-confirmation="Are you sure?" {% if (o.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
         <i class="icon-trash icon-white"></i>
         <span>Delete</span>
       </button>
