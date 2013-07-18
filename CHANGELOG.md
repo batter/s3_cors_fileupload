@@ -1,8 +1,9 @@
-## 0.2.1 (Unreleased)
+## 0.2.1
 
   - Adjusted FormHelper module so that the 'Add files...' button is a `span` tag instead of a `button` tag (fixes compatibility with FireFox)
   - Upgraded jQuery-File-Upload and the other JavaScript files it is dependent upon to the most recent releases (see [lib/s3\_cors\_fileupload/version.rb](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/master/lib/s3_cors_fileupload/version.rb) for the current version #'s)
   - Added new Process and Validation plugins from the jQuery-File-Upload package.
+  - Minor stability enhancements.
 
 ## 0.2.0
 
