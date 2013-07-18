@@ -108,9 +108,8 @@
             },
             // Callback for the start of each file upload request:
             send: function (e, data) {
-                if (data.confirmation && !confirm(data.confirmation))
-                  return; // abort the deletion if the user rejects the confirmation dialog
-                var that = $(this).data('blueimp-fileupload') || $(this).data('fileupload');
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload');
                 if (data.context && data.dataType &&
                         data.dataType.substr(0, 6) === 'iframe') {
                     // Iframe Transport does not support progress events.
@@ -306,6 +305,8 @@
             },
             // Callback for file deletion:
             destroy: function (e, data) {
+                if (data.confirmation && !confirm(data.confirmation))
+                  return; // abort the deletion if the user rejects the confirmation dialog
                 var that = $(this).data('blueimp-fileupload') ||
                         $(this).data('fileupload'),
                     removeNode = function () {
