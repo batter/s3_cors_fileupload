@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group :development do
   gem 'rdoc', '~> 3.12'
-  gem 'gem-release', '~> 0.5'
+  gem 'gem-release', '~> 0.6'
 end
 
 group :test do
