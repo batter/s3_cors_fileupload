@@ -3,4 +3,7 @@
 //= require s3_cors_fileupload/vendor/load-image
 //= require s3_cors_fileupload/jquery.iframe-transport
 //= require s3_cors_fileupload/jquery.fileupload
+//= require s3_cors_fileupload/jquery.fileupload-process
+//= require s3_cors_fileupload/jquery.fileupload-image
+//= require s3_cors_fileupload/jquery.fileupload-validate
 //= require s3_cors_fileupload/jquery.fileupload-ui
