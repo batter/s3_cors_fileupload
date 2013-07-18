@@ -51,12 +51,12 @@ module S3CorsFileupload
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->  
         <div class='row fileupload-buttonbar'>
           <div class='span7'>
-            <button class='btn btn-success fileinput-button'>
+            <span class='btn btn-success fileinput-button'>
               <i class='icon-plus icon-white'></i>
               <span>Add files...</span>
               ".html_safe +
               file_field_tag(:file, :multiple => true) + "
-            </button>
+            </span>
             <button class='btn btn-primary start' type='submit'>
               <i class='icon-upload icon-white'></i>
               <span>Start upload</span>
