@@ -1,3 +1,7 @@
+## 0.3.0 (Unreleased)
+
+  - Rails 4 compatibility.
+
 ## 0.2.1
 
   - Adjusted FormHelper module so that the 'Add files...' button is a `span` tag instead of a `button` tag (fixes compatibility with FireFox)
