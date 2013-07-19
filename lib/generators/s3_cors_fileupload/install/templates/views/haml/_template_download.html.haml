@@ -7,7 +7,7 @@
       %span.preview
         {% if (file.thumbnailUrl) { %}
         %a{:download => "{%=file.name%}", :href => "{%=file.url%}", :title => "{%=file.name%}", :"data-gallery" => ''}
-          %img{:src => "{%=file.thumbnailUrl%}"}/
+          %img{:src => "{%=file.thumbnailUrl%}"}
         {% } %}
     %td
       %p.name
