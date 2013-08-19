@@ -1,12 +1,11 @@
 require 'rails/generators'
 require 'rails/generators/migration'
-require 'rails/generators/active_record/migration'
+require 'rails/generators/active_record'
 
 module S3CorsFileupload
   module Generators
     class InstallGenerator < ::Rails::Generators::Base
       include ::Rails::Generators::Migration
-      extend ActiveRecord::Generators::Migration
 
       VALID_TEMPLATE_LANGS = [:erb, :haml]
 
@@ -48,6 +47,10 @@ module S3CorsFileupload
         "    get :generate_key, :on => :collection", "\n",
         "  end"].join
         )
+      end
+
+      def self.next_migration_number(dirname)
+        ActiveRecord::Generators::Base.next_migration_number(dirname)
       end
 
     end
