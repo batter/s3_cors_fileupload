@@ -5,8 +5,8 @@ A gem to allow for uploading of files to directly AWS-S3 via [CORS](http://www.w
 
 ### Included JavaScript plugin versions
 
-* jQuery File Upload User Interface Plugin 8.5.0
-* jQuery File Upload Plugin 5.32.0
+* jQuery File Upload User Interface Plugin 8.8.5
+* jQuery File Upload Plugin 5.32.6
 * jQuery UI Widget 1.10.3+amd
 
 ### Upgrade notes for `0.2` (and higher) releases

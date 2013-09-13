@@ -10,11 +10,22 @@
         {% } %}
     %td
       %p.name
-        %a{:href => "{%=o.url%}", :title => "{%=o.name%}", :download => "{%=o.name%}", :"data-gallery" => !"{%= o.thumbnailUrl ? 'true' : '' %}".html_safe.empty? && ''} {%=o.name%}
+        {% if (o.url) { %}
+        %a{:href => "{%=o.url%}", :title => "{%=o.name%}", :download => "{%=o.name%}", :"data-gallery" => !"{%= o.image ? 'true' : '' %}".html_safe.empty? && ''} {%=o.name%}
+        {% } else { %}
+        %span {%=o.name%}
+        {% } %}
     %td
       %span.size {%=formatFileSize(o.size)%}
     %td
+      {% if (o.delete_url) { %}
       %button.btn.btn-danger.delete{"data-type" => "DELETE", "data-url" => "{%=o.delete_url%}", "data-object_id" => "{%=o.id%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (o.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (o.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
         %i.icon-trash.icon-white
         %span Delete
       %input.toggle{:name => "delete", :type => "checkbox", :value => "1"}
+      {% } else { %}
+      %button.btn.btn-warning.cancel
+        %i.glyphicon.glyphicon-ban-circle
+        %span Cancel
+      {% } %}
+          

@@ -50,23 +50,23 @@ module S3CorsFileupload
         end.join.html_safe + "
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->  
         <div class='row fileupload-buttonbar'>
-          <div class='span7'>
+          <div class='col-lg-7'>
             <span class='btn btn-success fileinput-button'>
-              <i class='icon-plus icon-white'></i>
+              <i class='glyphicon glyphicon-plus'></i>
               <span>Add files...</span>
               ".html_safe +
               file_field_tag(:file, :multiple => true) + "
             </span>
             <button type='submit' class='btn btn-primary start'>
-              <i class='icon-upload icon-white'></i>
+              <i class='glyphicon glyphicon-upload'></i>
               <span>Start upload</span>
             </button>
             <button type='reset' class='btn btn-warning cancel'>
-              <i class='icon-ban-circle icon-white'></i>
+              <i class='glyphicon glyphicon-ban-circle'></i>
               <span>Cancel upload</span>
             </button>
             <button type='button' class='btn btn-danger delete'>
-              <i class='icon-trash icon-white'></i>
+              <i class='glyphicon glyphicon-trash'></i>
               <span>Delete</span>
             </button>
             <input type='checkbox' class='toggle'></input>
@@ -74,10 +74,10 @@ module S3CorsFileupload
 	          <span class='fileupload-loading'></span>
           </div>
           <!-- The global progress information -->
-          <div class='span5 fileupload-progress fade'>
+          <div class='col-lg-5 fileupload-progress fade'>
             <!-- The global progress bar -->
-            <div class='progress progress-success progress-striped active' role='progressbar' aria-valuemin='0' aria-valuemax='100'>
-              <div class='bar' style='width: 0%;'></div>
+            <div class='progress progress-striped active' role='progressbar' aria-valuemin='0' aria-valuemax='100'>
+              <div class='progress-bar progress-bar-success' style='width: 0%;'></div>
             </div>
             <!-- The extended global progress information -->
             <div class='progress-extended'>&nbsp;</div>

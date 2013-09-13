@@ -9,24 +9,24 @@
       %p.name {%=file.name%}
       {% if (file.error) { %}
       %div
-        %span.label.label-important Error
+        %span.label.label-danger Error
         {%=file.error%}
       {% } %}
     %td
       %p.size {%=o.formatFileSize(file.size)%}
       {% if (!o.files.error) { %}
-      .progress.progress-success.progress-striped.active{:role => 'progressbar', :"aria-valuemin" => '0', :"aria-valuemax" => '100', :"aria-valuenow" => '0'}
-        .bar{:style => "width:0%;"}
+      .progress.progress-striped.active{:role => 'progressbar', :"aria-valuemin" => '0', :"aria-valuemax" => '100', :"aria-valuenow" => '0'}
+        .progress-bar.progress-bar-success{:style => "width:0%;"}
       {% } %}
     %td
       {% if (!o.files.error && !i && !o.options.autoUpload) { %}
       %button.btn.btn-primary.start
-        %i.icon-upload.icon-white
+        %i.glyphicon.glyphicon-upload
         %span Start
       {% } %}
       {% if (!i) { %}
       %button.btn.btn-warning.cancel
-        %i.icon-ban-circle.icon-white
+        %i.glyphicon.glyphicon-ban-circle
         %span Cancel
       {% } %}
   {% } %}

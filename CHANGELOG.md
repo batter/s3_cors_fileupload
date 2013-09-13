@@ -1,11 +1,15 @@
 ## 0.3.0 (Unreleased)
 
   - Rails 4 compatibility.
+  - Upgraded jQuery-File-Upload and corresponding JavaScript dependencies to most recent releases
+    (see [lib/s3\_cors\_fileupload/version.rb](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/master/lib/s3_cors_fileupload/version.rb) for the current version #'s)
+  - Updated to [Twitter Bootstrap](http://twitter.github.com/bootstrap/) 3.
 
 ## 0.2.1
 
   - Adjusted FormHelper module so that the 'Add files...' button is a `span` tag instead of a `button` tag (fixes compatibility with FireFox)
-  - Upgraded jQuery-File-Upload and the other JavaScript files it is dependent upon to the most recent releases (see [lib/s3\_cors\_fileupload/version.rb](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/master/lib/s3_cors_fileupload/version.rb) for the current version #'s)
+  - Upgraded jQuery-File-Upload and the other JavaScript files it is dependent upon to the most recent releases
+    (see [lib/s3\_cors\_fileupload/version.rb](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/v0.2.1/lib/s3_cors_fileupload/version.rb) for the current version #'s)
   - Added new Process and Validation plugins from the jQuery-File-Upload package.
   - Minor stability enhancements.
 
