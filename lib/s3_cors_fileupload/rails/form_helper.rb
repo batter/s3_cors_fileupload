@@ -14,6 +14,9 @@ module S3CorsFileupload
     # :bucket           The name of the bucket on S3 you wish for the files to be uploaded to.
     #                   Defaults to `Config.bucket` (read from the yaml config file).
     #
+    # :secure           Dictates whether the form action URL will be pointing to a secure URL or not.
+    #                   Defaults to `true`.
+    #
     # Any other key creates standard HTML options for the form tag.
     def s3_cors_fileupload_form_tag(options = {}, &block)
       policy_helper = PolicyHelper.new(options)
@@ -28,9 +31,9 @@ module S3CorsFileupload
         :success_action_status => '201'
       }
       # assume that all of the non-documented keys are 
-      _html_options = options.reject { |key, val| [:access_key_id, :acl, :max_file_size, :bucket].include?(key) }
+      _html_options = options.reject { |key, val| [:access_key_id, :acl, :max_file_size, :bucket, :secure].include?(key) }
       # return the form html
-      construct_form_html(hidden_form_fields, policy_helper.options[:bucket], _html_options,  &block)
+      construct_form_html(hidden_form_fields, policy_helper.options[:bucket], options[:secure], _html_options,  &block)
     end
 
     alias_method :s3_cors_fileupload_form, :s3_cors_fileupload_form_tag
@@ -42,9 +45,9 @@ module S3CorsFileupload
     end
 
     # hidden fields argument should be a hash of key value pairs (values may be blank if desired)
-    def construct_form_html(hidden_fields, bucket, html_options = {}, &block)
+    def construct_form_html(hidden_fields, bucket, secure = true, html_options = {}, &block)
       # now build the html for the form
-      form_tag("https://#{bucket}.s3.amazonaws.com", build_form_options(html_options)) do
+      form_tag(secure == false ? "http://#{bucket}.s3.amazonaws.com" : "https://#{bucket}.s3.amazonaws.com", build_form_options(html_options)) do
         hidden_fields.map do |name, value|
           hidden_field_tag(name, value)
         end.join.html_safe + "
