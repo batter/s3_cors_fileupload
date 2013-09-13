@@ -12,9 +12,9 @@
     %td
       %p.name
         {% if (file.url) { %}
-          %a{:href => "{%=file.url%}", :title => "{%=file.name%}", :download => "{%=file.name%}", :"data-gallery" => !"{%= file.thumbnailUrl ? ' ' : '' %}".html_safe.empty? && ''} {%=file.name%}
+        %a{:href => "{%=file.url%}", :title => "{%=file.name%}", :download => "{%=file.name%}", :"data-gallery" => !"{%= file.thumbnailUrl ? ' ' : '' %}".html_safe.empty? && ''} {%=file.name%}
         {% } else { %}
-          %span {%=file.name%}
+        %span {%=file.name%}
         {% } %}
       {% if (file.error) { %}
       %div
@@ -25,13 +25,13 @@
       %span.size {%=o.formatFileSize(file.size)%}
     %td
       {% if (file.deleteUrl) { %}
-        %button.btn.btn-danger.delete{"data-type" => "{%=file.deleteType%}", "data-url" => "{%=file.deleteUrl%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
-          %i.glyphicon.glyphicon-trash
-          %span Delete
-        %input.toggle{:name => "delete", :type => "checkbox", :value => "1"}
+      %button.btn.btn-danger.delete{"data-type" => "{%=file.deleteType%}", "data-url" => "{%=file.deleteUrl%}", "data-confirmation" => "Are you sure?", "data-xhr-fields" => !"{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}".blank? && "{% if (file.delete_with_credentials) { %} {'withCredentials': true} {% } %}"}
+        %i.glyphicon.glyphicon-trash
+        %span Delete
+      %input.toggle{:name => "delete", :type => "checkbox", :value => "1"}
       {% } else { %}
-        %button.btn.btn-warning.cancel
-          %i.glyphicon.glyphicon-ban-circle
-          %span Cancel
+      %button.btn.btn-warning.cancel
+        %i.glyphicon.glyphicon-ban-circle
+        %span Cancel
       {% } %}
   {% } %}
