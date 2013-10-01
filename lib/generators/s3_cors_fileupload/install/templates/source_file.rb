@@ -9,8 +9,10 @@ class SourceFile < ActiveRecord::Base
     self.file_name = key.split('/').last if key
     # for some reason, the response from AWS seems to escape the slashes in the keys, this line will unescape the slash
     self.url = url.gsub(/%2F/, '/') if url
-    self.file_size ||= s3_object.try(:size)
-    self.file_content_type ||= s3_object.try(:content_type)
+    # Rails 4 introduces the `try!` method, which is required in this instance, since the `size` and `content_type` methods are not
+    # explicitly defined on an `AWS::S3::S3Object` class.
+    self.file_size ||= s3_object.respond_to?(:try!) ? s3_object.try!(:size) : s3_object.try(:size)
+    self.file_content_type ||=  s3_object.respond_to?(:try!) ? s3_object.try!(:content_type) : s3_object.try(:content_type)
   end
   # make all attributes readonly after creating the record (not sure we need this?)
   after_create { readonly! }
