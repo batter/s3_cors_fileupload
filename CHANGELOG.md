@@ -5,6 +5,7 @@
     (see [lib/s3\_cors\_fileupload/version.rb](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/master/lib/s3_cors_fileupload/version.rb) for the current version #'s)
   - Updated to [Twitter Bootstrap](http://twitter.github.com/bootstrap/) 3.
   - Added new `:secure` option that can be passed into the `FormHelper`'s `s3_cors_fileupload_form_tag` method to set the protocol to `http` or `https` (defaults to `https`).
+  - Removed dependency on [jquery-rails](https://github.com/rails/jquery-rails), since there are other valid solutions for including it to a Rails app.
 
 ## 0.2.1
 
