@@ -1,4 +1,4 @@
-## 0.3.0 (Unreleased)
+## 0.3.0
 
   - Rails 4 compatibility.
   - Upgraded jQuery-File-Upload and corresponding JavaScript dependencies to most recent releases
