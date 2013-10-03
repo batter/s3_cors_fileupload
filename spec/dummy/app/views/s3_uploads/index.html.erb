@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' %>
+
+<div style="padding: 10px;">
+  <h2>Upload file(s)</h2>
+  <%= s3_cors_fileupload_form_tag :id => 'fileupload' %>
+
+  <div class="javascript-templates">
+    <%= render 'template_upload' %>
+    <%= render 'template_download' %>
+    <%= render 'template_uploaded' %>
+  </div>
+</div>
+
+<script>
+  //<![CDATA[
+    $(function () {
+      // Initialize the jQuery File Upload widget:
+      $('#fileupload').fileupload({
+        dataType: 'xml',
+        sequentialUploads: true
+      });
+      
+      // Load existing files:
+      $.getJSON('/source_files', function (files) {
+        $.each(files, function(index, value) { 
+          $('#upload_files tbody').append(tmpl('template-uploaded', value));
+        });
+      });
+    });
+    
+    // used by the jQuery File Upload
+    var fileUploadErrors = {
+      maxFileSize: 'File is too big',
+      minFileSize: 'File is too small',
+      acceptFileTypes: 'Filetype not allowed',
+      maxNumberOfFiles: 'Max number of files exceeded',
+      uploadedBytes: 'Uploaded bytes exceed file size',
+      emptyResult: 'Empty file upload result'
+    };
+  //]]>
+</script>

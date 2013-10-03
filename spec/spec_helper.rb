@@ -3,6 +3,14 @@ require File.expand_path('../dummy/config/environment', __FILE__)
 # the gem's library gets included through a require statement on 'dummy/config/application.rb'
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rspec'
+require 'capybara/rails'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
+
+# Run any available migration in the dummy app
+ActiveRecord::Migrator.migrate("#{::Rails.root}/db/migrate")
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

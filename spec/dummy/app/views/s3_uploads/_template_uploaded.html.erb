@@ -1,0 +1,41 @@
+<!-- The template to display files that have been uploaded to S3 already -->
+<!-- This essentially is a stand-in for the template_download partial for the s3_cors_fileupload gem's purposes -->
+<script id="template-uploaded" type="text/x-tmpl">
+  <tr class="template-uploaded" id="source_file_{%=o.id%}">
+    <td>
+      <span class="preview">
+        {% if (o.image == true) { %}
+          <a href="{%=o.url%}" title="{%=o.name%}" download="{%=o.name%}" data-gallery>
+            <image src="{%=o.url%}", style='width:80px; height:56px;'></image>
+          </a>
+        {% } %}
+      </span>
+    </td>
+    <td>
+      <p class="name">
+        {% if (o.url) { %}
+          <a href="{%=o.url%}" title="{%=o.name%}" download="{%=o.name%}" {%=o.image ? 'data-gallery' : ''%}>{%=o.name%}</a>
+        {% } else { %}
+          <span>{%=o.name%}</span>
+        {% } %}
+      </p>
+    </td>
+    <td>
+      <span class="size">{%=formatFileSize(o.size)%}</span>
+    </td>
+    <td>
+      {% if (o.delete_url) { %}
+        <button class="btn btn-danger delete" data-type="DELETE" data-url="{%=o.delete_url%}" data-object_id="{%=o.id%}" data-confirmation="Are you sure?" {% if (o.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+          <i class="glyphicon glyphicon-trash"></i>
+          <span>Delete</span>
+        </button>
+        <input type="checkbox" name="delete" value="1" class="toggle">
+      {% } else { %}
+        <button class="btn btn-warning cancel">
+          <i class="glyphicon glyphicon-ban-circle"></i>
+          <span>Cancel</span>
+        </button>
+      {% } %}
+    </td>
+  </tr>
+</script>

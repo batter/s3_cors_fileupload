@@ -6,6 +6,7 @@
   - Updated to [Twitter Bootstrap](http://twitter.github.com/bootstrap/) 3.
   - Added new `:secure` option that can be passed into the `FormHelper`'s `s3_cors_fileupload_form_tag` method to set the protocol to `http` or `https` (defaults to `https`).
   - Removed dependency on [jquery-rails](https://github.com/rails/jquery-rails), since there are other valid solutions for including it to a Rails app.
+  - Added a lot more spec coverage.
 
 ## 0.2.1
 
