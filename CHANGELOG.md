@@ -1,3 +1,7 @@
+## 0.4.0
+
+  - [#3](https://github.com/fullbridge-batkins/s3_cors_fileupload/issues/3) - Added a model template to support [Mongoid](http://www.mongoid.org/).
+
 ## 0.3.0
 
   - Rails 4 compatibility.

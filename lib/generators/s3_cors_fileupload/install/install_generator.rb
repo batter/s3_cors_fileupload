@@ -25,7 +25,8 @@ module S3CorsFileupload
       end
 
       def create_model_file
-        copy_file 'source_file.rb', 'app/models/source_file.rb'
+        adapter = defined?(Mongoid) ? 'mongoid' : 'active_record'
+        copy_file "models/#{adapter}/source_file.rb", 'app/models/source_file.rb'
       end
 
       def create_controller
