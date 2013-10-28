@@ -20,7 +20,7 @@ class SourceFile < ActiveRecord::Base
 
   def to_jq_upload
     { 
-      'id' => id,
+      'id' => id.to_s,
       'name' => file_name,
       'size' => file_size,
       'url' => url,
