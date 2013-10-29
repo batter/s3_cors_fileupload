@@ -1,4 +1,4 @@
-## 0.4.0
+## 0.4.0 (Unreleased)
 
   - [#3](https://github.com/fullbridge-batkins/s3_cors_fileupload/issues/3) - Added a model template to support [Mongoid](http://www.mongoid.org/).
 

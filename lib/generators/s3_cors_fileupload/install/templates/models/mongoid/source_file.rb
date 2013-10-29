@@ -2,6 +2,14 @@ require 'aws/s3'
 
 class SourceFile
   include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :file_name
+  field :file_content_type
+  field :file_size, :type => Integer
+  field :url
+  field :key
+  field :bucket
 
   validates_presence_of :file_name, :file_content_type, :file_size, :key, :bucket
 

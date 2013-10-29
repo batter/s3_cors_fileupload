@@ -21,7 +21,7 @@ module S3CorsFileupload
       end
 
       def create_migration_file
-        migration_template 'create_source_files.rb', 'db/migrate/create_source_files.rb' if options.migration?
+        migration_template 'create_source_files.rb', 'db/migrate/create_source_files.rb' if options.migration? and not defined?(Mongoid)
       end
 
       def create_model_file
