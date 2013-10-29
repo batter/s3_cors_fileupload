@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.description = "Provides file uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload javascript"
   s.licenses    = ["MIT"]
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.rubygems_version = "1.8.24"
+  s.required_ruby_version     = '>= 1.9'
+  s.required_rubygems_version = '>= 1.8'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
