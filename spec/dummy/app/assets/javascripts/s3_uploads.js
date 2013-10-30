@@ -1,6 +1,6 @@
 /*
  * s3-cors-file-upload
- * http://github.com/fullbridge-batkins/s3_cors_fileupload
+ * http://github.com/batter/s3_cors_fileupload
  *
  * Copyright 2013, Ben Atkins
  * http://batkins.net

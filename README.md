@@ -1,4 +1,4 @@
-# S3CorsFileupload [![Gem Version](https://badge.fury.io/rb/s3_cors_fileupload.png)](http://badge.fury.io/rb/s3_cors_fileupload) [![Build Status](https://travis-ci.org/fullbridge-batkins/s3_cors_fileupload.png?branch=master)](https://travis-ci.org/fullbridge-batkins/s3_cors_fileupload) [![Dependency Status](https://gemnasium.com/fullbridge-batkins/s3_cors_fileupload.png)](https://gemnasium.com/fullbridge-batkins/s3_cors_fileupload)
+# S3CorsFileupload [![Gem Version](https://badge.fury.io/rb/s3_cors_fileupload.png)](http://badge.fury.io/rb/s3_cors_fileupload) [![Build Status](https://travis-ci.org/batter/s3_cors_fileupload.png?branch=master)](https://travis-ci.org/batter/s3_cors_fileupload) [![Dependency Status](https://gemnasium.com/batter/s3_cors_fileupload.png)](https://gemnasium.com/batter/s3_cors_fileupload)
 
 A gem to allow for uploading of files to directly AWS-S3 via [CORS](http://www.w3.org/TR/cors/) using the
 [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) for Rails 3.1 and greater.
@@ -155,5 +155,5 @@ Note: I am still in the process of trying to write a more thorough test suite, s
 
 ## Copyright
 
-Copyright &copy; 2013 Ben Atkins. See [LICENSE.txt](https://github.com/fullbridge-batkins/s3_cors_fileupload/blob/master/LICENSE.txt)
+Copyright &copy; 2013 Ben Atkins. See [LICENSE.txt](https://github.com/batter/s3_cors_fileupload/blob/master/LICENSE.txt)
 for further details.

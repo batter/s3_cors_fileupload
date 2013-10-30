@@ -30,4 +30,3 @@ module Dummy
     config.active_record.whitelist_attributes = false if ::S3CorsFileupload.active_record_protected_attributes?
   end
 end
-

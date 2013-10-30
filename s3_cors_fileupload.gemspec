@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Ben Atkins"]
   s.email       = ["batkinz@gmail.com"]
-  s.homepage    = "http://github.com/fullbridge-batkins/s3_cors_fileupload"
+  s.homepage    = "http://github.com/batter/s3_cors_fileupload"
   s.summary     = "File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
   s.description = "Provides file uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload javascript"
   s.licenses    = ["MIT"]
