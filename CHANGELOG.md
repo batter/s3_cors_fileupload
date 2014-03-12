@@ -1,7 +1,7 @@
 ## 0.4.0 (Unreleased)
 
   - [#3](https://github.com/batter/s3_cors_fileupload/issues/3) - Added a model template to support [Mongoid](http://www.mongoid.org/).
-
+  - Prevent potential error encountered when using the `InstallGenerator` with Rails `4.1`.
 ## 0.3.0
 
   - Rails 4 compatibility.
