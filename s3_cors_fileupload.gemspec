@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Ben Atkins"]
   s.email       = ["batkinz@gmail.com"]
   s.homepage    = "http://github.com/batter/s3_cors_fileupload"
-  s.summary     = "File uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
-  s.description = "Provides file uploads for Rails ~> 3.1 to AWS-S3 via CORS using the jQuery-File-Upload javascript"
+  s.summary     = "File uploads for Rails >= 3.1 to AWS-S3 via CORS using the jQuery-File-Upload script"
+  s.description = "Provides file uploads for Rails >= 3.1 to AWS-S3 via CORS using the jQuery-File-Upload javascript (via the asset pipeline)"
   s.licenses    = ["MIT"]
 
   s.required_ruby_version     = '>= 1.9'
