@@ -14,6 +14,9 @@ module S3CorsFileupload
         :max_file_size => Config.max_file_size || 524288000,
         :bucket => Config.bucket
       }.merge(_options).merge(:secret_access_key => Config.secret_access_key)
+
+      ensure_option_is_set :bucket
+      ensure_option_is_set :secret_access_key
     end
 
     # generate the policy document that amazon is expecting.
@@ -47,6 +50,14 @@ module S3CorsFileupload
             self.policy_document
           )
         ).gsub(/\n/, '')
+    end
+
+    private
+
+    def ensure_option_is_set(option)
+      if @options[option].blank?
+        raise S3CorsFileupload::Config::MissingOptionError, "#{option} is a required option in #{S3CorsFileupload::Config.path}"
+      end
     end
   end
 end

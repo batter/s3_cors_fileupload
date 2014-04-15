@@ -41,6 +41,30 @@ describe S3CorsFileupload::PolicyHelper do
         it { policy_helper.options[:bucket].should == 'foobar' }
       end
     end
+
+    context "missing required configuration options" do
+      context "missing bucket" do
+        before { S3CorsFileupload::Config.stub(:bucket) { '' } }
+
+        it 'raises a meaningful error' do
+          expect {
+            policy_helper
+          }.to raise_error(S3CorsFileupload::Config::MissingOptionError,
+                           "bucket is a required option in #{S3CorsFileupload::Config.path}")
+        end
+      end
+
+      context "missing secret_access_key" do
+        before { S3CorsFileupload::Config.stub(:secret_access_key) { '' } }
+
+        it 'raises a meaningful error' do
+          expect {
+            policy_helper
+          }.to raise_error(S3CorsFileupload::Config::MissingOptionError,
+                           "secret_access_key is a required option in #{S3CorsFileupload::Config.path}")
+        end
+      end
+    end
   end
 
   describe "Instance Methods" do
