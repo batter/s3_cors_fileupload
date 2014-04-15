@@ -2,7 +2,7 @@ require 'yaml'
 
 module S3CorsFileupload
   module Config
-    MissingOptionError = Class.new(RuntimeError)
+    class MissingOptionError < RuntimeError; end
 
     # this allows us to lazily instantiate the configuration by reading it in when it needs to be accessed
     class << self
@@ -15,14 +15,14 @@ module S3CorsFileupload
         end
       end
 
-      def path
-        ::Rails.root.join('config', 'amazon_s3.yml')
+      def file_path
+        @file_path ||= ::Rails.root.join('config', 'amazon_s3.yml')
       end
 
       private
 
       def config
-        @config ||= YAML.load(ERB.new(File.read(path)).result)[::Rails.env]
+        @config ||= YAML.load(ERB.new(File.read(self.file_path)).result)[::Rails.env]
       rescue
         warn('WARNING: s3_cors_fileupload gem was unable to locate a configuration file in config/amazon_s3.yml and may not ' +
              'be able to function properly.  Please run `rails generate s3_cors_upload:install` before proceeding.')

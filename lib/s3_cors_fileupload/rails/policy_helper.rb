@@ -15,8 +15,7 @@ module S3CorsFileupload
         :bucket => Config.bucket
       }.merge(_options).merge(:secret_access_key => Config.secret_access_key)
 
-      ensure_option_is_set :bucket
-      ensure_option_is_set :secret_access_key
+      validate_presence_of_options(:bucket, :secret_access_key)
     end
 
     # generate the policy document that amazon is expecting.
@@ -54,10 +53,13 @@ module S3CorsFileupload
 
     private
 
-    def ensure_option_is_set(option)
-      if @options[option].blank?
-        raise S3CorsFileupload::Config::MissingOptionError, "#{option} is a required option in #{S3CorsFileupload::Config.path}"
+    def validate_presence_of_options(*options)
+      options.each do |option|
+        if @options[option].blank?
+          raise S3CorsFileupload::Config::MissingOptionError, "'#{option}' is a required option in #{S3CorsFileupload::Config.file_path}"
+        end
       end
     end
+
   end
 end

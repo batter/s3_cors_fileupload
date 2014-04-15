@@ -1,7 +1,10 @@
 ## 0.4.0 (Unreleased)
 
+  - [#4](https://github.com/batter/s3_cors_fileupload/pull/4) - A meaningfull error message will be raised if options that are required
+    in order for the gem to connect to `AWS::S3` are not set properly on the config file.
   - [#3](https://github.com/batter/s3_cors_fileupload/issues/3) - Added a model template to support [Mongoid](http://www.mongoid.org/).
   - Prevent potential error encountered when using the `InstallGenerator` with Rails `4.1`.
+
 ## 0.3.0
 
   - Rails 4 compatibility.

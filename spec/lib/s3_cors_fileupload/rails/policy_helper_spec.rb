@@ -47,21 +47,17 @@ describe S3CorsFileupload::PolicyHelper do
         before { S3CorsFileupload::Config.stub(:bucket) { '' } }
 
         it 'raises a meaningful error' do
-          expect {
-            policy_helper
-          }.to raise_error(S3CorsFileupload::Config::MissingOptionError,
-                           "bucket is a required option in #{S3CorsFileupload::Config.path}")
+          expect { policy_helper }.to raise_error(S3CorsFileupload::Config::MissingOptionError,
+                    "'bucket' is a required option in #{S3CorsFileupload::Config.file_path}")
         end
       end
 
       context "missing secret_access_key" do
-        before { S3CorsFileupload::Config.stub(:secret_access_key) { '' } }
+        before { S3CorsFileupload::Config.stub(:secret_access_key) { nil } }
 
         it 'raises a meaningful error' do
-          expect {
-            policy_helper
-          }.to raise_error(S3CorsFileupload::Config::MissingOptionError,
-                           "secret_access_key is a required option in #{S3CorsFileupload::Config.path}")
+          expect { policy_helper }.to raise_error(S3CorsFileupload::Config::MissingOptionError,
+                    "'secret_access_key' is a required option in #{S3CorsFileupload::Config.file_path}")
         end
       end
     end
