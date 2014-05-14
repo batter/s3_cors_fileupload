@@ -23,10 +23,10 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = %w(README.md CHANGELOG.md LICENSE.txt)
   s.rdoc_options = %w(--charset=UTF-8)
 
-  s.add_dependency('rails', ['>= 3.1', '< 5.0'])
-  s.add_dependency('multi_json', ['~> 1.0'])
-  s.add_dependency('aws-s3', ['~> 0.6'])
+  s.add_dependency 'rails', ['>= 3.1', '< 5.0']
+  s.add_dependency 'multi_json', '~> 1.0'
+  s.add_dependency 'aws-s3', '~> 0.6'
 
-  s.add_development_dependency('rake', ['>= 0.8.7'])
-  s.add_development_dependency('bundler', ['>= 0'])
+  s.add_development_dependency 'rake', '>= 0.8.7'
+  s.add_development_dependency 'bundler', '>= 0'
 end
