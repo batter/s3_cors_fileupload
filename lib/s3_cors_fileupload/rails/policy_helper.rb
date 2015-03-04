@@ -10,7 +10,7 @@ module S3CorsFileupload
     def initialize(_options = {})
       # default max_file_size to 500 MB if nothing is received
       @options = {
-        :acl => 'public-read',
+        :acl => Config.acl || 'public-read',
         :max_file_size => Config.max_file_size || 524288000,
         :bucket => Config.bucket
       }.merge(_options).merge(:secret_access_key => Config.secret_access_key)
