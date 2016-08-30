@@ -4,7 +4,7 @@ feature 'Uploads' do
   background { visit source_files_path }
 
   describe 'GET #index' do
-    scenario { page.should have_selector('h2', :text => 'Upload file(s)') }
+    scenario { page.should have_selector('h2', text: 'Upload file(s)') }
 
     scenario :s3_cors_fileupload_form_tag do
       within('form#fileupload') do
@@ -14,7 +14,7 @@ feature 'Uploads' do
       end
     end
 
-    scenario "Attaching files", :js => true do
+    scenario "Attaching files", js: true do
       within('form#fileupload') do
         within('table#upload_files tbody.files') do
           page.should_not have_selector('tr')
@@ -25,10 +25,10 @@ feature 'Uploads' do
         within('table#upload_files tbody.files') do
           page.should have_selector('tr.template-upload')
           within('tr.template-upload') do
-            page.should have_selector('td', :text => 'dummy.pdf')
-            page.should have_selector('td', :text => '7.84 KB')
-            page.should have_selector('td', :text => 'Start')
-            page.should have_selector('td', :text => 'Cancel')
+            page.should have_selector('td', text: 'dummy.pdf')
+            page.should have_selector('td', text: '7.84 KB')
+            page.should have_selector('td', text: 'Start')
+            page.should have_selector('td', text: 'Cancel')
           end
         end
       end

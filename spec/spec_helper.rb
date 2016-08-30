@@ -8,6 +8,7 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 
 Capybara.javascript_driver = :poltergeist
+Capybara.ignore_hidden_elements = false
 
 # Run any available migration in the dummy app
 ActiveRecord::Migrator.migrate("#{::Rails.root}/db/migrate")
