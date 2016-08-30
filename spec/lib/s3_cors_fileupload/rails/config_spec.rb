@@ -25,7 +25,7 @@ describe S3CorsFileupload::Config do
       context "key doesn't exist on `config/amazon_s3.yml`" do
         its(:foobar) { should be_nil }
         10.times do
-          its(Faker::Lorem.word.to_sym) { should be_nil }
+          its(FFaker::Lorem.word.to_sym) { should be_nil }
         end
       end
 
