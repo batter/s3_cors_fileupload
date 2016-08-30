@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gemspec
 
 group :development do
   gem 'rdoc', '~> 4.0'
@@ -7,8 +8,6 @@ end
 
 group :test do
   # dependencies for S3CorsFileUpload
-  gem 'rails', '~> 4.0'
-  gem 'aws-s3'
   gem 'sqlite3' # the database driver for rails
   gem 'jquery-rails' # for including jQuery into the dummy app
 

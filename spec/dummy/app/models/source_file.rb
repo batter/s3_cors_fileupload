@@ -1,4 +1,4 @@
-require 'aws/s3'
+require 'aws-sdk'
 
 class SourceFile < ActiveRecord::Base
   # This line can be removed for Rails 4 apps that are using Strong Parameters
@@ -10,7 +10,7 @@ class SourceFile < ActiveRecord::Base
     self.file_name = key.split('/').last if key
     # for some reason, the response from AWS seems to escape the slashes in the keys, this line will unescape the slash
     self.url = url.gsub(/%2F/, '/') if url
-    self.file_size ||= s3_object.size rescue nil
+    self.file_size ||= s3_object.content_length rescue nil
     self.file_content_type ||= s3_object.content_type rescue nil
   end
   # make all attributes readonly after creating the record (not sure we need this?)
@@ -20,7 +20,7 @@ class SourceFile < ActiveRecord::Base
 
   def to_jq_upload
     { 
-      'id' => id,
+      'id' => id.to_s,
       'name' => file_name,
       'size' => file_size,
       'url' => url,
@@ -35,19 +35,17 @@ class SourceFile < ActiveRecord::Base
 
   #---- start S3 related methods -----
   def s3_object
-    @s3_object ||= AWS::S3::S3Object.find(key, bucket) if self.class.open_aws && key
-  rescue
-    nil
+    @s3_object ||=
+      key && self.class.aws_s3_client.get_object(bucket: bucket, key: key)
   end
 
-  def self.open_aws
-    unless @aws_connected
-      AWS::S3::Base.establish_connection!(
+  def self.aws_s3_client
+    @aws_s3_client ||=
+      Aws::S3::Client.new(
+        :region            => S3CorsFileupload::Config.region,
         :access_key_id     => S3CorsFileupload::Config.access_key_id,
         :secret_access_key => S3CorsFileupload::Config.secret_access_key
       )
-    end
-    @aws_connected ||= AWS::S3::Base.connected?
   end
   #---- end S3 related methods -----
 

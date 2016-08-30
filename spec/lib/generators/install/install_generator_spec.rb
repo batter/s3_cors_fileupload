@@ -48,7 +48,7 @@ describe S3CorsFileupload::Generators::InstallGenerator do
         directory 'app' do
           directory 'models' do
             file 'source_file.rb' do
-              contains "require 'aws/s3'"
+              contains "require 'aws-sdk'"
               contains 'class SourceFile < ActiveRecord::Base'
             end
           end
