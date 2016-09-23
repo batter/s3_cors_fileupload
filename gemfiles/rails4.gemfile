@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2'
+gem 'mime-types', '< 3.0' # Ruby2+ required for mime-types 3.x
 
 gemspec path: '../'
