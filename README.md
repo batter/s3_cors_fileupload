@@ -1,4 +1,4 @@
-# S3CorsFileupload [![Gem Version](https://badge.fury.io/rb/s3_cors_fileupload.png)](http://badge.fury.io/rb/s3_cors_fileupload) [![Build Status](https://travis-ci.org/batter/s3_cors_fileupload.png?branch=master)](https://travis-ci.org/batter/s3_cors_fileupload) [![Dependency Status](https://gemnasium.com/batter/s3_cors_fileupload.png)](https://gemnasium.com/batter/s3_cors_fileupload)
+# S3CorsFileupload [![Gem Version](https://badge.fury.io/rb/s3_cors_fileupload.svg)](http://badge.fury.io/rb/s3_cors_fileupload) [![Build Status](https://travis-ci.org/batter/s3_cors_fileupload.svg?branch=master)](https://travis-ci.org/batter/s3_cors_fileupload) [![Dependency Status](https://gemnasium.com/batter/s3_cors_fileupload.svg)](https://gemnasium.com/batter/s3_cors_fileupload)
 
 A gem to allow for uploading of files to directly AWS-S3 via [CORS](http://www.w3.org/TR/cors/) using the
 [jQuery-File-Upload javascript](http://blueimp.github.com/jQuery-File-Upload/) for Rails 3.1 and greater.
